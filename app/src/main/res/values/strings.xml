@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Hidrantes Cerca</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_lista">Lista de Hidrantes</string>
+    <string name="title_activity_mapa_general">Navegar</string>
+    <string name="title_activity_editar_hidrante">Informacion de Hidrante</string>
+    <string name="title_activity_mapa_nuevo">Nuevo Hidrante</string>
+    <string-array name="estados">
+        <item>Activo</item>
+        <item>Inactivo</item>
+        <item>Eliminado</item>
+    </string-array>
+</resources>
