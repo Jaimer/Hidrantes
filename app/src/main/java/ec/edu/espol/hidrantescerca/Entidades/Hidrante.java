@@ -1,4 +1,4 @@
-package ec.edu.espol.hidrantescerca;
+package ec.edu.espol.hidrantescerca.Entidades;
 
 
 import java.util.Arrays;

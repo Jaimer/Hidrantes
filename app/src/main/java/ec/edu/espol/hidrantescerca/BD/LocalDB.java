@@ -1,4 +1,4 @@
-package ec.edu.espol.hidrantescerca;
+package ec.edu.espol.hidrantescerca.BD;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import ec.edu.espol.hidrantescerca.Entidades.Hidrante;
 
 /**
  * Created by jmoscoso on 27/10/2015.
@@ -30,15 +32,32 @@ public class LocalDB extends SQLiteOpenHelper {
                 " t25 int, " +
                 " acople text, " +
                 " foto blob, " +
-                " obs text, " +
-                " fecha_crea text, " +
-                " fecha_mod text, " +
-                " fecha_insp text, " +
-                " fecha_man text, " +
-                " usuario_crea text, " +
-                " usuario_mod text " +
+                " obs text " +
                 " ) ";
         db.execSQL(sqlHidrante);
+
+        String sqlUsuarios = "create table Usuario" +
+                " ( id_cedula text primary key, " +
+                " nombre text, " +
+                " apellido text, " +
+                " tipo integer, " +
+                " institucion text, " +
+                " cargo text, " +
+                " password text, " +
+                " estado char, " +
+                " email text " +
+                " )";
+        db.execSQL(sqlUsuarios);
+
+        String sqlMovimientos = "create table Movimientos" +
+                "(idmov integer primary key, " +
+                " id_hidrante integer, " +
+                " fecha_mod text, " +
+                " usuario_mod, " +
+                " FOREIGN KEY(id_hidrante) REFERENCES Hidrantes(_id), " +
+                " FOREIGN KEY(usuario_mod) REFERENCES Usuario(id_cedula) " +
+                " ) ";
+        db.execSQL(sqlMovimientos);
     }
 
     @Override
