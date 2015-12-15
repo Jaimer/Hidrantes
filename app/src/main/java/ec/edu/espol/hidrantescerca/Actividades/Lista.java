@@ -40,7 +40,7 @@ public class Lista extends AppCompatActivity {
        // LocalDB db = new LocalDB(this);
         ArrayList<Hidrante> Hidrantes = new ArrayList<>();
 
-       // Cursor c = db.obtenerHidrantes();
+       // Cursor c = db.getHidrantes();
 
         //recorrer resultados del query
         if (c.moveToFirst()){//ver si hay resultados

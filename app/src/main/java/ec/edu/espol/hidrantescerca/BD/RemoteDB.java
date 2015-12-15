@@ -3,17 +3,18 @@ package ec.edu.espol.hidrantescerca.BD;
 import android.content.Context;
 import android.util.Base64;
 import android.util.Log;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import ec.edu.espol.hidrantescerca.BD.LocalDB;
 import ec.edu.espol.hidrantescerca.Entidades.Hidrante;
 import ec.edu.espol.hidrantescerca.Utils.VolleySingleton;
 

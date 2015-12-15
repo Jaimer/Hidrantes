@@ -78,19 +78,15 @@ public class LocalDB extends SQLiteOpenHelper {
         values.put("acople", hidrante.getAcople());
         values.put("foto", hidrante.getFoto());
         values.put("obs", hidrante.getObservacion());
-        values.put("fecha_crea", hidrante.getFecha_crea());
-        values.put("fecha_mod", hidrante.getFecha_mod());
-        values.put("fecha_insp", hidrante.getFecha_insp());
-        values.put("fecha_man", hidrante.getFecha_man());
-        values.put("usuario_crea", hidrante.getUsuario_crea());
-        values.put("usuario_mod", hidrante.getUsuario_mod());
         long rowID = mDB.insert("Hidrantes", null, values);
         return rowID;
     }
 
-    public Cursor obtenerHidrantes(){
+    public Cursor getHidrantes(){
         return mDB.rawQuery("SELECT * FROM HIDRANTES", null);
     }
+
+    public Cursor getHidrantePorId(int id){ return mDB.rawQuery("SELECT * FROM HIDRANTES WHERE _id = "+id, null);}
 
     public Cursor borrarTodosLosHidrantes(){
         return mDB.rawQuery("DELETE FROM HIDRANTES", null);

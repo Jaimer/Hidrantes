@@ -1,6 +1,7 @@
 package ec.edu.espol.hidrantescerca.Actividades;
 
 import android.Manifest;
+import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -32,7 +33,7 @@ import ec.edu.espol.hidrantescerca.BD.RemoteDB;
 import ec.edu.espol.hidrantescerca.R;
 import ec.edu.espol.hidrantescerca.Utils.Utils;
 
-public class Mapa extends AppCompatActivity {
+public class Mapa extends AppCompatActivity{
 
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
 
@@ -159,7 +160,7 @@ public class Mapa extends AppCompatActivity {
 
     private void dibujarHidrantes() {
         LocalDB db = new LocalDB(this);
-        Cursor c = db.obtenerHidrantes();
+        Cursor c = db.getHidrantes();
         RemoteDB rdb = new RemoteDB(this);
         rdb.getHidrantes();
         Log.d("Tamaño cursor",""+c.getCount());
