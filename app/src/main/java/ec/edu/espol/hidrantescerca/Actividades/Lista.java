@@ -1,4 +1,4 @@
-package ec.edu.espol.hidrantescerca;
+package ec.edu.espol.hidrantescerca.Actividades;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -15,7 +15,7 @@ import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
 
-public class lista extends AppCompatActivity {
+public class Lista extends AppCompatActivity {
 
     /*@Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,4 +1,4 @@
-package ec.edu.espol.hidrantescerca;
+package ec.edu.espol.hidrantescerca.Utils;
 
 import android.app.AlertDialog;
 import android.content.Context;
