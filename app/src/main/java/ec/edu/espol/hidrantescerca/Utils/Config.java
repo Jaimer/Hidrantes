@@ -5,6 +5,6 @@ package ec.edu.espol.hidrantescerca.Utils;
  */
 public final class Config {
     public static String getURL = "http://sip-publicidad.com/hidrantes/getHidrante.php";
-
+    public static String getMovURL = "http://sip-publicidad.com/hidrantes/getMovimientos.php";
 
 }

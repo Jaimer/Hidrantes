@@ -1,11 +1,9 @@
 package ec.edu.espol.hidrantescerca.Actividades;
 
 import android.Manifest;
-import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
@@ -13,7 +11,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 
@@ -28,14 +25,19 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import ec.edu.espol.hidrantescerca.BD.LocalDB;
+import java.util.ArrayList;
+
 import ec.edu.espol.hidrantescerca.BD.RemoteDB;
+import ec.edu.espol.hidrantescerca.Entidades.Hidrante;
 import ec.edu.espol.hidrantescerca.R;
+import ec.edu.espol.hidrantescerca.Utils.RemoteDBTaskCompleted;
 import ec.edu.espol.hidrantescerca.Utils.Utils;
 
-public class Mapa extends AppCompatActivity{
+public class Mapa extends AppCompatActivity implements RemoteDBTaskCompleted {
 
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
+    ArrayList<Hidrante> Hidrantes;
+    RemoteDB rdb = new RemoteDB(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -159,7 +161,17 @@ public class Mapa extends AppCompatActivity{
     }
 
     private void dibujarHidrantes() {
-        LocalDB db = new LocalDB(this);
+        rdb.setAccion("getHidrantes");
+        rdb.execute();
+        /*while (rdb.getStatus() != AsyncTask.Status.FINISHED){
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }*/
+
+        /*LocalDB db = new LocalDB(this);
         Cursor c = db.getHidrantes();
         RemoteDB rdb = new RemoteDB(this);
         rdb.getHidrantes();
@@ -174,7 +186,7 @@ public class Mapa extends AppCompatActivity{
             }
         } else {
             Utils.alerta("Error", "No hay hidrantes", this);
-        }
+        }*/
     }
 
     public void abrirLista(View view){
@@ -182,4 +194,25 @@ public class Mapa extends AppCompatActivity{
         startActivity(intent);
     }
 
+    @Override
+    public void onTaskCompleted() {
+
+    }
+
+    @Override
+    public void onGetHidrantesCompleted() {
+        ArrayList<Hidrante> Hidrantes = rdb.getHidrantes();
+        onTaskCompleted();
+        if(!Hidrantes.isEmpty()){
+            for (Hidrante h : Hidrantes){
+                String[] latlng = h.getPosicion().split(",");
+                mMap.addMarker(new MarkerOptions()
+                        .position(new LatLng(Double.parseDouble(latlng[0]), Double.parseDouble(latlng[1])))
+                        .title(h.getNombre())
+                        .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_hidrante)));
+            }
+        } else{
+            Utils.alerta("Error", "No hay hidrantes", this);
+        }
+    }
 }
