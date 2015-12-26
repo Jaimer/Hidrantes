@@ -92,6 +92,8 @@ public class LocalDB extends SQLiteOpenHelper {
         return mDB.rawQuery("DELETE FROM HIDRANTES", null);
     }
 
+    public Cursor getMovRows(){ return mDB.rawQuery("SELECT COUNT(*) FROM Movimientos", null);}
+
     public void cerrar(){
         mDB.close();
     }

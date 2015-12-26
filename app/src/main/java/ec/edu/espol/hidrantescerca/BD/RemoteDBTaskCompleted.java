@@ -1,4 +1,4 @@
-package ec.edu.espol.hidrantescerca.Utils;
+package ec.edu.espol.hidrantescerca.BD;
 
 /**
  * Created by jaime on 24/12/2015.
@@ -6,4 +6,5 @@ package ec.edu.espol.hidrantescerca.Utils;
 public interface RemoteDBTaskCompleted {
     void onTaskCompleted();
     void onGetHidrantesCompleted();
+    void onGetMovRowsCompleted();
 }

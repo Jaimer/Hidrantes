@@ -27,17 +27,20 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 
+import ec.edu.espol.hidrantescerca.BD.LocalDB;
 import ec.edu.espol.hidrantescerca.BD.RemoteDB;
+import ec.edu.espol.hidrantescerca.BD.SyncTaskCompleted;
 import ec.edu.espol.hidrantescerca.Entidades.Hidrante;
 import ec.edu.espol.hidrantescerca.R;
-import ec.edu.espol.hidrantescerca.Utils.RemoteDBTaskCompleted;
+import ec.edu.espol.hidrantescerca.BD.RemoteDBTaskCompleted;
 import ec.edu.espol.hidrantescerca.Utils.Utils;
 
-public class Mapa extends AppCompatActivity implements RemoteDBTaskCompleted {
+public class Mapa extends AppCompatActivity implements RemoteDBTaskCompleted, SyncTaskCompleted {
 
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
     ArrayList<Hidrante> Hidrantes;
     RemoteDB rdb = new RemoteDB(this);
+    LocalDB ldb ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +49,7 @@ public class Mapa extends AppCompatActivity implements RemoteDBTaskCompleted {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setUpMapIfNeeded();
+        ldb = new LocalDB(this);
 
         //Dibuja un marcador en el punto donde el usuario toco el mapa y centra la vista a ese punto
         mMap.setOnMapClickListener(new OnMapClickListener() {
@@ -157,36 +161,9 @@ public class Mapa extends AppCompatActivity implements RemoteDBTaskCompleted {
         }
 
         mMap.clear();
-        dibujarHidrantes();
-    }
+        rdb.execute("getHidrantes");
 
-    private void dibujarHidrantes() {
-        rdb.setAccion("getHidrantes");
-        rdb.execute();
-        /*while (rdb.getStatus() != AsyncTask.Status.FINISHED){
-            try {
-                Thread.sleep(10);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }*/
-
-        /*LocalDB db = new LocalDB(this);
-        Cursor c = db.getHidrantes();
-        RemoteDB rdb = new RemoteDB(this);
-        rdb.getHidrantes();
-        Log.d("Tamaño cursor",""+c.getCount());
-        if (c.moveToFirst()) {
-            while (c.moveToNext()) {
-                String[] latlng = c.getString(2).split(",");
-                mMap.addMarker(new MarkerOptions()
-                        .position(new LatLng(Double.parseDouble(latlng[0]), Double.parseDouble(latlng[1])))
-                        .title(c.getString(1))
-                        .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_hidrante)));
-            }
-        } else {
-            Utils.alerta("Error", "No hay hidrantes", this);
-        }*/
+        new RemoteDB(this).execute("getMovRows");
     }
 
     public void abrirLista(View view){
@@ -194,15 +171,7 @@ public class Mapa extends AppCompatActivity implements RemoteDBTaskCompleted {
         startActivity(intent);
     }
 
-    @Override
-    public void onTaskCompleted() {
-
-    }
-
-    @Override
-    public void onGetHidrantesCompleted() {
-        ArrayList<Hidrante> Hidrantes = rdb.getHidrantes();
-        onTaskCompleted();
+    public void dibujarHidrantes(){
         if(!Hidrantes.isEmpty()){
             for (Hidrante h : Hidrantes){
                 String[] latlng = h.getPosicion().split(",");
@@ -214,5 +183,27 @@ public class Mapa extends AppCompatActivity implements RemoteDBTaskCompleted {
         } else{
             Utils.alerta("Error", "No hay hidrantes", this);
         }
+    }
+
+    @Override
+    public void onTaskCompleted() {
+
+    }
+
+    @Override
+    public void onGetHidrantesCompleted() {
+        Hidrantes = rdb.getHidrantes();
+        dibujarHidrantes();
+    }
+
+    @Override
+    public void onGetMovRowsCompleted() {
+        int movimientos = rdb.getMovRows();
+        Utils.alerta("Movimientos",""+movimientos,this);
+    }
+
+    @Override
+    public void onSyncTaskCompleted() {
+
     }
 }
