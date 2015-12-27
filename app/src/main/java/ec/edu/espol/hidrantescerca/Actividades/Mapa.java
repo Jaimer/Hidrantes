@@ -38,7 +38,7 @@ import ec.edu.espol.hidrantescerca.Utils.Utils;
 public class Mapa extends AppCompatActivity implements RemoteDBTaskCompleted, SyncTaskCompleted {
 
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
-    ArrayList<Hidrante> Hidrantes;
+    ArrayList<Hidrante> Hidrantes = new ArrayList<>();
     RemoteDB rdb = new RemoteDB(this);
     LocalDB ldb ;
 
@@ -50,6 +50,7 @@ public class Mapa extends AppCompatActivity implements RemoteDBTaskCompleted, Sy
         setSupportActionBar(toolbar);
         setUpMapIfNeeded();
         ldb = new LocalDB(this);
+        Hidrantes = ldb.getHidrantes();
 
         //Dibuja un marcador en el punto donde el usuario toco el mapa y centra la vista a ese punto
         mMap.setOnMapClickListener(new OnMapClickListener() {
@@ -161,9 +162,7 @@ public class Mapa extends AppCompatActivity implements RemoteDBTaskCompleted, Sy
         }
 
         mMap.clear();
-        rdb.execute("getHidrantes");
-
-        new RemoteDB(this).execute("getMovRows");
+        dibujarHidrantes();
     }
 
     public void abrirLista(View view){

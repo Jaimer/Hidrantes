@@ -6,8 +6,12 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Base64;
+
+import java.util.ArrayList;
 
 import ec.edu.espol.hidrantescerca.Entidades.Hidrante;
+import ec.edu.espol.hidrantescerca.Entidades.Movimiento;
 
 /**
  * Created by jmoscoso on 27/10/2015.
@@ -23,7 +27,7 @@ public class LocalDB extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String sqlHidrante = "create table Hidrantes" +
-                " ( _id integer primary key autoincrement , " +
+                " ( _id integer primary key, " +
                 " nombre text , " +
                 " posicion text , " +
                 " estado char, " +
@@ -69,6 +73,7 @@ public class LocalDB extends SQLiteOpenHelper {
 
     public long insertarHidrante(Hidrante hidrante){
         ContentValues values = new ContentValues();
+        values.put("_id", hidrante.getId());
         values.put("nombre", hidrante.getNombre());
         values.put("posicion", hidrante.getPosicion());
         values.put("estado", ""+hidrante.getEstado());
@@ -82,8 +87,36 @@ public class LocalDB extends SQLiteOpenHelper {
         return rowID;
     }
 
-    public Cursor getHidrantes(){
-        return mDB.rawQuery("SELECT * FROM HIDRANTES", null);
+    public long insertarMovimiento(Movimiento movimiento){
+        ContentValues values = new ContentValues();
+        values.put("idmov", movimiento.getIdmov());
+        values.put("id_hidrante", movimiento.getId_hidrante());
+        values.put("fecha_mod", movimiento.getFecha_mod());
+        values.put("usuario_mod", movimiento.getUsuario_mod());
+        long rowID = mDB.insert("Movimientos", null, values);
+        return rowID;
+    }
+
+    public ArrayList<Hidrante> getHidrantes(){
+        ArrayList<Hidrante> hidrantes = new ArrayList<>();
+        Cursor cursor = mDB.rawQuery("SELECT * FROM HIDRANTES", null);
+
+        if(cursor != null){
+            cursor.moveToFirst();
+            while (cursor.moveToNext()){
+                Hidrante hidrante= new Hidrante(cursor.getInt(0),
+                        cursor.getString(1),
+                        cursor.getString(2),
+                        cursor.getString(3).charAt(0),
+                        cursor.getInt(4),
+                        cursor.getInt(5),
+                        cursor.getInt(6),
+                        cursor.getString(7),
+                        Base64.decode(cursor.getString(8),Base64.DEFAULT),
+                        cursor.getString(8));
+            }
+        }
+        return hidrantes;
     }
 
     public Cursor getHidrantePorId(int id){ return mDB.rawQuery("SELECT * FROM HIDRANTES WHERE _id = "+id, null);}
@@ -92,7 +125,16 @@ public class LocalDB extends SQLiteOpenHelper {
         return mDB.rawQuery("DELETE FROM HIDRANTES", null);
     }
 
-    public Cursor getMovRows(){ return mDB.rawQuery("SELECT COUNT(*) FROM Movimientos", null);}
+    public int getMovRows(){
+        int movimientos = -1;
+        Cursor cursor =  mDB.rawQuery("SELECT COUNT(*) FROM Movimientos", null);
+        if (cursor != null){
+            cursor.moveToFirst();
+            movimientos = cursor.getInt(0);
+
+        }
+        return movimientos;
+    }
 
     public void cerrar(){
         mDB.close();

@@ -128,11 +128,20 @@ public class RemoteDB extends AsyncTask<String,Integer,String>{
         try {
             JSONObject resp = new JSONObject(respuesta);
             JSONArray data = resp.getJSONArray("hidrantes");
-
             for(int i = 0; i < data.length(); i++) {
                 JSONObject obj = data.getJSONObject(i);
                 byte[] foto = Base64.decode(obj.getString("foto"), Base64.DEFAULT);
-                Hidrante h = new Hidrante(obj.getInt("_id"), obj.getString("nombre"), obj.getString("posicion"), obj.getString("estado").charAt(0), obj.getInt("psi"), obj.getInt("t4"), obj.getInt("t25"), obj.getString("acople"), foto, obj.getString("obs"));
+                Hidrante h = new Hidrante(
+                        obj.getInt("_id"),
+                        obj.getString("nombre"),
+                        obj.getString("posicion"),
+                        obj.getString("estado").charAt(0),
+                        obj.getInt("psi"),
+                        obj.getInt("t4"),
+                        obj.getInt("t25"),
+                        obj.getString("acople"),
+                        foto,
+                        obj.getString("obs"));
                 Hidrantes.add(h);
                 //Log.d("Hidrante: ", h.toString());
             }

@@ -1,6 +1,11 @@
 package ec.edu.espol.hidrantescerca.Entidades;
 
 
+import android.util.Base64;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.Arrays;
 
 /**
@@ -138,5 +143,30 @@ public class Hidrante {
                 ", foto=" + Arrays.toString(foto) +
                 ", obs='" + obs + '\'' +
                 '}';
+    }
+
+    public String toJSON(){
+        JSONObject jsonObject = new JSONObject();
+        try{
+            jsonObject.put("nombre",getNombre());
+            jsonObject.put("posicion",getPosicion());
+            jsonObject.put("estado", getEstado());
+            jsonObject.put("psi", ""+getPsi());
+            jsonObject.put("t4", ""+getTomas_4());
+            jsonObject.put("t25", ""+getTomas2_5());
+            jsonObject.put("acople", getAcople());
+            if(getFoto() != null){
+                jsonObject.put("foto", Base64.encodeToString(getFoto(), Base64.DEFAULT));
+            }else{
+                jsonObject.put("foto", "");
+            }
+
+            jsonObject.put("obs", getObservacion());
+
+            return jsonObject.toString();
+        }catch (JSONException e){
+            e.printStackTrace();
+            return "";
+        }
     }
 }

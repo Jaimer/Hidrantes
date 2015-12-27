@@ -1,7 +1,6 @@
 package ec.edu.espol.hidrantescerca.BD;
 
 import android.content.Context;
-import android.database.Cursor;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -34,7 +33,7 @@ public class DBSync extends AsyncTask<Context, Integer, String> {
     protected String doInBackground(Context... params) {
         Context context = params[0];
         String response = null;
-
+            //TODO: Cambiar la forma de obtener los cambios. Enviar la cantidad de movimientos locales al servidor, y que el servidor calcule la diferencia y devuelva los movimientos faltantes
         try {
             URL url = new URL(Config.getMovURL+"?TRA=ROW");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -66,32 +65,31 @@ public class DBSync extends AsyncTask<Context, Integer, String> {
             Log.d("Error", "Error de Lectura");
         }
 
-        int localmovs = 0, remotemovs = 0;
+        int localmovs, remotemovs = 0;
 
         LocalDB ldb = new LocalDB(context);
-        Cursor localcur = ldb.getMovRows();
+        localmovs = ldb.getMovRows();
 
-        if(localcur != null){
-            localcur.moveToFirst();
-            localmovs = localcur.getInt(0);
+        if(localmovs != -1){
+            try {
+                JSONObject resp = new JSONObject(response);
+                JSONArray data = resp.getJSONArray("Movimientos");
+                JSONObject obj = data.getJSONObject(0);
+                remotemovs = obj.getInt("Filas");
+                Log.d("Movs de JSON",""+remotemovs);
+            }catch (JSONException e){
+                e.printStackTrace();
+            }
+
+            if(remotemovs > localmovs){
+                int cambios = remotemovs - localmovs;
+
+            }
         }else{
-            Log.d("Error","Cursor vacio");
+            Log.d("Error", "No se obtuvieron movimientos");
         }
 
-        try {
-            JSONObject resp = new JSONObject(response);
-            JSONArray data = resp.getJSONArray("Movimientos");
-            JSONObject obj = data.getJSONObject(0);
-            remotemovs = obj.getInt("Filas");
-            Log.d("Movs de JSON",""+remotemovs);
-        }catch (JSONException e){
-            e.printStackTrace();
-        }
 
-        if(remotemovs > localmovs){
-            int cambios = remotemovs - localmovs;
-
-        }
         return response;
     }
 
