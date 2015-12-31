@@ -10,6 +10,7 @@ import org.json.JSONObject;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -39,55 +40,62 @@ public class InsertarHidranteRDB extends AsyncTask<Hidrante, Integer, String> {
 
     @Override
     protected String doInBackground(Hidrante... params) {
-        Hidrante hidrante = params[0];
         String respuesta = null;
         String estado;
-
+        String hidrante = params[0].toJSON();
+        Log.d("Hidrante", hidrante);
         try {
             URL url = new URL(Config.setHidranteURL);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("POST");
+            conn.setUseCaches(false);
             conn.setDoOutput(true);
             conn.setDoInput(true);
-            conn.setUseCaches(false);
+            conn.setAllowUserInteraction(false);
+            conn.setRequestProperty("User-Agent","Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36");
+            conn.setRequestProperty("Accept","*/*");
             conn.setRequestProperty("Content-Type", "application/json");
-            conn.setRequestMethod("POST");
-            conn.setChunkedStreamingMode(0);
             conn.connect();
 
+            DataOutputStream dataout = new DataOutputStream(conn.getOutputStream());
+            dataout.writeBytes(hidrante);
 
-            OutputStream out = new BufferedOutputStream(conn.getOutputStream());
-            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out, "UTF-8"));
-            Log.d("Hidrante", hidrante.toJSON());
-            writer.write(hidrante.toJSON());
-            out.flush();
-            InputStream inputStream = conn.getInputStream();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-            StringBuilder result = new StringBuilder();
-            String linea;
+            int status = conn.getResponseCode();
+            switch (status){
+                case 200:
+                case 201:
 
-            while ((linea = reader.readLine()) != null){
-                result.append(linea);
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    StringBuilder result = new StringBuilder();
+                    String linea;
+
+                    while ((linea = reader.readLine()) != null){
+                        result.append(linea);
+                    }
+
+                    Log.d("Respuesta", result.toString());
+                    JSONObject resp = new JSONObject(result.toString());
+                    estado = resp.getString("estado");
+                    if(estado.equals("1")){
+                        JSONObject data = resp.getJSONObject("movimiento");
+                        movimiento = new Movimiento(data.getInt("idmovimiento"), data.getInt("id_hidrante"), data.getString("fecha_mod"), data.getString("usuario_mod"));
+                        respuesta = estado;
+                    }else{
+                        movimiento = null;
+                        respuesta = estado;
+                    }
+                    break;
+                default:
+                    Log.d("Respuesta",""+status);
+                    break;
             }
 
-            writer.close();
-            out.close();
-
-            Log.d("Respuesta", result.toString());
-            JSONObject resp = new JSONObject(result.toString());
-            estado = resp.getString("estado");
-            if(estado.equals("1")){
-                JSONObject data = resp.getJSONObject("movimiento");
-                movimiento = new Movimiento(data.getInt("idmovimiento"), data.getInt("id_hidrante"), data.getString("fecha_mod"), data.getString("usuario_mod"));
-                respuesta = estado;
-            }else{
-                movimiento = null;
-                respuesta = estado;
-            }
 
         } catch (MalformedURLException e) {
             Log.d("Error", "URL Malformada");
         } catch (ProtocolException e) {
             Log.d("Error", "Protocolo erróneo");
+            e.printStackTrace();
         } catch (IOException e) {
             Log.d("Error", "Error de Lectura");
         } catch (JSONException e) {
