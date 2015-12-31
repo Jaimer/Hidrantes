@@ -38,7 +38,7 @@ import ec.edu.espol.hidrantescerca.Utils.Utils;
 public class Mapa extends AppCompatActivity implements RemoteDBTaskCompleted, SyncTaskCompleted {
 
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
-    ArrayList<Hidrante> Hidrantes = new ArrayList<>();
+    ArrayList<Hidrante> hidrantes = new ArrayList<>();
     RemoteDB rdb = new RemoteDB(this);
     LocalDB ldb ;
 
@@ -48,10 +48,9 @@ public class Mapa extends AppCompatActivity implements RemoteDBTaskCompleted, Sy
         setContentView(R.layout.activity_mapa);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        this.ldb = new LocalDB(this);
+        this.hidrantes = ldb.getHidrantes();
         setUpMapIfNeeded();
-        ldb = new LocalDB(this);
-        Hidrantes = ldb.getHidrantes();
-
         //Dibuja un marcador en el punto donde el usuario toco el mapa y centra la vista a ese punto
         mMap.setOnMapClickListener(new OnMapClickListener() {
 
@@ -71,6 +70,7 @@ public class Mapa extends AppCompatActivity implements RemoteDBTaskCompleted, Sy
 
                 // Clears the previously touched position
                 mMap.clear();
+                //Hidrantes = ldb.getHidrantes();
                 dibujarHidrantes();
 
                 // Animating to the touched position
@@ -163,6 +163,7 @@ public class Mapa extends AppCompatActivity implements RemoteDBTaskCompleted, Sy
 
         mMap.clear();
         dibujarHidrantes();
+        //rdb.execute("getHidrantes");
     }
 
     public void abrirLista(View view){
@@ -171,9 +172,9 @@ public class Mapa extends AppCompatActivity implements RemoteDBTaskCompleted, Sy
     }
 
     public void dibujarHidrantes(){
-        if(!Hidrantes.isEmpty()){
-            for (Hidrante h : Hidrantes){
-                String[] latlng = h.getPosicion().split(",");
+        if(!this.hidrantes.isEmpty()){
+            for (Hidrante h : this.hidrantes){
+                String[] latlng = h.getPosicion().split("&");
                 mMap.addMarker(new MarkerOptions()
                         .position(new LatLng(Double.parseDouble(latlng[0]), Double.parseDouble(latlng[1])))
                         .title(h.getNombre())
@@ -191,7 +192,7 @@ public class Mapa extends AppCompatActivity implements RemoteDBTaskCompleted, Sy
 
     @Override
     public void onGetHidrantesCompleted() {
-        Hidrantes = rdb.getHidrantes();
+        hidrantes = rdb.getHidrantes();
         dibujarHidrantes();
     }
 

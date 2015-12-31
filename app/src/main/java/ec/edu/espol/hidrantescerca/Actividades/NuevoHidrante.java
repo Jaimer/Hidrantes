@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -70,8 +69,13 @@ public class NuevoHidrante extends AppCompatActivity implements InsHidranteRDBTa
         }
         EditText obs = (EditText)findViewById(R.id.txt_obs);
 
+        StringBuilder posicion = new StringBuilder();
+        posicion.append(lat.getText().toString());
+        posicion.append("&");
+        posicion.append(lng.getText().toString());
+
         hidrante = new Hidrante(nombre.getText().toString(),
-                lat.getText().toString()+lng.getText().toString(),
+                posicion.toString(),
                 estado.getSelectedItem().toString().charAt(0),
                 Integer.valueOf(psi.getText().toString()),
                 Integer.valueOf(tomas4.getText().toString()),
@@ -107,11 +111,11 @@ public class NuevoHidrante extends AppCompatActivity implements InsHidranteRDBTa
         if(estado.equals("1")){
             LocalDB ldb = new LocalDB(this);
             this.hidrante.setId(movimiento.getId_hidrante());
-            //ldb.insertarHidrante(this.hidrante);
-            //ldb.insertarMovimiento(movimiento);
+            ldb.insertarHidrante(this.hidrante);
+            ldb.insertarMovimiento(movimiento);
             Utils.alerta("Guardar", "Hidrante guardado", this);
         }else{
-            Utils.alerta("Guardar", "Error al guardar Hifdrante", this);
+            Utils.alerta("Guardar", "Error al guardar Hidrante", this);
         }
     }
 }

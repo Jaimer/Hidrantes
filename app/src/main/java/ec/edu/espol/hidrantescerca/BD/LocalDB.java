@@ -112,8 +112,9 @@ public class LocalDB extends SQLiteOpenHelper {
                         cursor.getInt(5),
                         cursor.getInt(6),
                         cursor.getString(7),
-                        Base64.decode(cursor.getString(8),Base64.DEFAULT),
-                        cursor.getString(8));
+                        cursor.getBlob(8),
+                        cursor.getString(9));
+                hidrantes.add(hidrante);
             }
         }
         return hidrantes;
