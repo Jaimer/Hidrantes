@@ -83,7 +83,7 @@ public class LocalDB extends SQLiteOpenHelper {
         values.put("acople", hidrante.getAcople());
         values.put("foto", hidrante.getFoto());
         values.put("obs", hidrante.getObservacion());
-        long rowID = mDB.insert("Hidrantes", null, values);
+        long rowID = mDB.insertWithOnConflict("Hidrantes", null, values, SQLiteDatabase.CONFLICT_REPLACE);
         return rowID;
     }
 
@@ -93,7 +93,7 @@ public class LocalDB extends SQLiteOpenHelper {
         values.put("id_hidrante", movimiento.getId_hidrante());
         values.put("fecha_mod", movimiento.getFecha_mod());
         values.put("usuario_mod", movimiento.getUsuario_mod());
-        long rowID = mDB.insert("Movimientos", null, values);
+        long rowID = mDB.insertWithOnConflict("Movimientos", null, values, SQLiteDatabase.CONFLICT_REPLACE);
         return rowID;
     }
 

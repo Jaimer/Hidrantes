@@ -27,29 +27,26 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 
+import ec.edu.espol.hidrantescerca.BD.DBSync;
 import ec.edu.espol.hidrantescerca.BD.LocalDB;
-import ec.edu.espol.hidrantescerca.BD.RemoteDB;
 import ec.edu.espol.hidrantescerca.BD.SyncTaskCompleted;
 import ec.edu.espol.hidrantescerca.Entidades.Hidrante;
 import ec.edu.espol.hidrantescerca.R;
-import ec.edu.espol.hidrantescerca.BD.RemoteDBTaskCompleted;
 import ec.edu.espol.hidrantescerca.Utils.Utils;
 
-public class Mapa extends AppCompatActivity implements RemoteDBTaskCompleted, SyncTaskCompleted {
+public class Mapa extends AppCompatActivity implements SyncTaskCompleted {
 
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
     ArrayList<Hidrante> hidrantes = new ArrayList<>();
-    RemoteDB rdb = new RemoteDB(this);
     LocalDB ldb ;
-
+    DBSync dbs = new DBSync(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapa);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        this.ldb = new LocalDB(this);
-        this.hidrantes = ldb.getHidrantes();
+        dbs.execute(this);
         setUpMapIfNeeded();
         //Dibuja un marcador en el punto donde el usuario toco el mapa y centra la vista a ese punto
         mMap.setOnMapClickListener(new OnMapClickListener() {
@@ -172,6 +169,8 @@ public class Mapa extends AppCompatActivity implements RemoteDBTaskCompleted, Sy
     }
 
     public void dibujarHidrantes(){
+        this.ldb = new LocalDB(this);
+        this.hidrantes = ldb.getHidrantes();
         if(!this.hidrantes.isEmpty()){
             for (Hidrante h : this.hidrantes){
                 String[] latlng = h.getPosicion().split("&");
@@ -186,24 +185,8 @@ public class Mapa extends AppCompatActivity implements RemoteDBTaskCompleted, Sy
     }
 
     @Override
-    public void onTaskCompleted() {
-
-    }
-
-    @Override
-    public void onGetHidrantesCompleted() {
-        hidrantes = rdb.getHidrantes();
+    public void onSyncTaskCompleted(String resultado) {
         dibujarHidrantes();
-    }
-
-    @Override
-    public void onGetMovRowsCompleted() {
-        int movimientos = rdb.getMovRows();
-        Utils.alerta("Movimientos",""+movimientos,this);
-    }
-
-    @Override
-    public void onSyncTaskCompleted() {
-
+        Utils.alerta("Sincronizacion", resultado, this);
     }
 }

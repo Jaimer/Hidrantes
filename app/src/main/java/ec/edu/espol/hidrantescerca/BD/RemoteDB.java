@@ -72,7 +72,7 @@ public class RemoteDB extends AsyncTask<String,Integer,String>{
                 break;
             case "setHidrante":
                 try {
-                    URL url = new URL(Config.getMovURL+"?TRA=ROW");
+                    URL url = new URL(Config.getURL+"?TRA=ROW");
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                     conn.setReadTimeout(10000 /* milliseconds */);
                     conn.setConnectTimeout(15000 /* milliseconds */);
@@ -143,7 +143,6 @@ public class RemoteDB extends AsyncTask<String,Integer,String>{
                         foto,
                         obj.getString("obs"));
                 Hidrantes.add(h);
-                //Log.d("Hidrante: ", h.toString());
             }
         } catch (JSONException e) {
             e.printStackTrace();
