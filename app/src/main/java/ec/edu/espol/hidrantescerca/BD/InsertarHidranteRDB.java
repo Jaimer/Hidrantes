@@ -2,6 +2,7 @@ package ec.edu.espol.hidrantescerca.BD;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.os.Debug;
 import android.util.Log;
 
 import org.json.JSONException;
@@ -40,6 +41,7 @@ public class InsertarHidranteRDB extends AsyncTask<Hidrante, Integer, String> {
 
     @Override
     protected String doInBackground(Hidrante... params) {
+        //Debug.waitForDebugger();
         String respuesta = null;
         String estado;
         String hidrante = params[0].toJSON();
@@ -52,11 +54,13 @@ public class InsertarHidranteRDB extends AsyncTask<Hidrante, Integer, String> {
             conn.setDoOutput(true);
             conn.setDoInput(true);
             conn.setAllowUserInteraction(false);
-            conn.setRequestProperty("User-Agent","Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36");
+            conn.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36");
             conn.setRequestProperty("Accept","*/*");
-            conn.setRequestProperty("Content-Type", "application/json");
+            conn.setRequestProperty("Content-Type", "application/json; charset=utf-8");
             conn.connect();
 
+            //BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream(), "UTF-8"));
+            //bufferedWriter.write(hidrante);
             DataOutputStream dataout = new DataOutputStream(conn.getOutputStream());
             dataout.writeBytes(hidrante);
 

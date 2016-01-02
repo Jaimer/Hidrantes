@@ -150,7 +150,7 @@ public class Hidrante {
         try{
             jsonObject.put("nombre",getNombre());
             jsonObject.put("posicion",getPosicion());
-            jsonObject.put("estado", getEstado());
+            jsonObject.put("estado", ""+getEstado());
             jsonObject.put("psi", ""+getPsi());
             jsonObject.put("t4", ""+getTomas_4());
             jsonObject.put("t25", ""+getTomas2_5());

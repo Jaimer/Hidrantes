@@ -2,6 +2,7 @@ package ec.edu.espol.hidrantescerca.Actividades;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -35,17 +36,53 @@ public class NuevoHidrante extends AppCompatActivity implements InsHidranteRDBTa
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         Bundle bundle = getIntent().getParcelableExtra("bundle");
-        LatLng pos = bundle.getParcelable("pos");
-        EditText lat = (EditText)findViewById(R.id.txt_lat);
-        EditText lng = (EditText)findViewById(R.id.txt_lng);
-        if (pos != null){
+        int id = bundle.getInt("id");
+        if(id != -1){
+            LocalDB db = new LocalDB(this);
+            Hidrante hidrante = db.getHidrantePorId(id);
+
+            EditText nombre = (EditText)findViewById(R.id.txt_nombre);
+            EditText lat = (EditText)findViewById(R.id.txt_lat);
+            EditText lng = (EditText)findViewById(R.id.txt_lng);
+            Spinner estado = (Spinner)findViewById(R.id.spn_estado);
+            EditText tomas4 = (EditText)findViewById(R.id.txt_tomas4);
+            EditText tomas2_5 = (EditText)findViewById(R.id.txt_tomas2_5);
+            EditText psi = (EditText)findViewById(R.id.txt_presion);
+            EditText acople = (EditText)findViewById(R.id.txt_acople);
+            ImageView foto = (ImageView)findViewById(R.id.img_foto);
+            EditText obs = (EditText)findViewById(R.id.txt_obs);
+
+            nombre.setText(hidrante.getNombre());
+            String[] latlng = hidrante.getPosicion().split("&");
+            lat.setText(latlng[0]);
+            lng.setText(latlng[1]);
+            switch (hidrante.getEstado()){
+                case 'A':
+                    estado.setSelection(0);
+                    break;
+                case 'I':
+                    estado.setSelection(1);
+                    break;
+                case 'E':
+                    estado.setSelection(2);
+                    break;
+            }
+            tomas4.setText(""+hidrante.getTomas_4());
+            tomas2_5.setText(""+hidrante.getTomas2_5());
+            psi.setText(""+hidrante.getPsi());
+            acople.setText(hidrante.getAcople());
+            if (hidrante.getFoto().length > 0) {
+                Bitmap bmp = BitmapFactory.decodeByteArray(hidrante.getFoto(), 0, hidrante.getFoto().length);
+                foto.setImageBitmap(bmp);
+            }
+            obs.setText(hidrante.getObservacion());
+        }else{
+            EditText lat = (EditText)findViewById(R.id.txt_lat);
+            EditText lng = (EditText)findViewById(R.id.txt_lng);
+            LatLng pos = bundle.getParcelable("pos");
             lat.setText(Double.toString(pos.latitude));
             lng.setText(Double.toString(pos.longitude));
-        }else{
-            lat.setText(Double.toString(0));
-            lng.setText(Double.toString(0));
         }
-
     }
 
     public void guardarHidrante(View view){

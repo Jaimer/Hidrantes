@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -39,14 +40,13 @@ public class Mapa extends AppCompatActivity implements SyncTaskCompleted {
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
     ArrayList<Hidrante> hidrantes = new ArrayList<>();
     LocalDB ldb ;
-    DBSync dbs = new DBSync(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapa);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        dbs.execute(this);
+        this.ldb = new LocalDB(this);
         setUpMapIfNeeded();
         //Dibuja un marcador en el punto donde el usuario toco el mapa y centra la vista a ese punto
         mMap.setOnMapClickListener(new OnMapClickListener() {
@@ -86,7 +86,14 @@ public class Mapa extends AppCompatActivity implements SyncTaskCompleted {
             public void onInfoWindowClick(Marker marker) {
                 Intent intent = new Intent(Mapa.this, NuevoHidrante.class);
                 LatLng pos = marker.getPosition();
+                int id;
+                try {
+                    id = Integer.valueOf(marker.getTitle().split(" | ")[0]);
+                }catch(NumberFormatException e){
+                    id = -1;
+                }
                 Bundle bundle = new Bundle();
+                bundle.putInt("id", id);
                 bundle.putParcelable("pos", pos);
                 intent.putExtra("bundle", bundle);
                 startActivity(intent);
@@ -160,7 +167,6 @@ public class Mapa extends AppCompatActivity implements SyncTaskCompleted {
 
         mMap.clear();
         dibujarHidrantes();
-        //rdb.execute("getHidrantes");
     }
 
     public void abrirLista(View view){
@@ -168,15 +174,18 @@ public class Mapa extends AppCompatActivity implements SyncTaskCompleted {
         startActivity(intent);
     }
 
+    public void sincronizar(MenuItem menuItem){
+        new DBSync(this).execute(this);
+    }
+
     public void dibujarHidrantes(){
-        this.ldb = new LocalDB(this);
         this.hidrantes = ldb.getHidrantes();
         if(!this.hidrantes.isEmpty()){
             for (Hidrante h : this.hidrantes){
                 String[] latlng = h.getPosicion().split("&");
                 mMap.addMarker(new MarkerOptions()
                         .position(new LatLng(Double.parseDouble(latlng[0]), Double.parseDouble(latlng[1])))
-                        .title(h.getNombre())
+                        .title(h.getId() + " | " + h.getNombre())
                         .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_hidrante)));
             }
         } else{

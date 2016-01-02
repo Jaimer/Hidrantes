@@ -36,8 +36,8 @@ public class DBSync extends AsyncTask<Context, Integer, String> {
 
     @Override
     protected String doInBackground(Context... params) {
-        Debug.waitForDebugger();
         Context context = params[0];
+        //Debug.waitForDebugger();
         String response = null;
         String resultado = null;
         int localmovs;
@@ -94,7 +94,7 @@ public class DBSync extends AsyncTask<Context, Integer, String> {
                     movimientos.add(m);
                 }
 
-                JSONArray hData = resp.getJSONArray("Hidrantes").getJSONArray(0);
+                JSONArray hData = resp.getJSONArray("Hidrantes");
                 for(int i=0; i < hData.length(); i++){
                     JSONObject hObj = hData.getJSONObject(i);
                     String sfoto;

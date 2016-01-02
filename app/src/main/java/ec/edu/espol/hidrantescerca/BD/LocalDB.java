@@ -102,7 +102,6 @@ public class LocalDB extends SQLiteOpenHelper {
         Cursor cursor = mDB.rawQuery("SELECT * FROM HIDRANTES", null);
 
         if(cursor != null){
-            cursor.moveToFirst();
             while (cursor.moveToNext()){
                 Hidrante hidrante= new Hidrante(cursor.getInt(0),
                         cursor.getString(1),
@@ -120,7 +119,22 @@ public class LocalDB extends SQLiteOpenHelper {
         return hidrantes;
     }
 
-    public Cursor getHidrantePorId(int id){ return mDB.rawQuery("SELECT * FROM HIDRANTES WHERE _id = "+id, null);}
+    public Hidrante getHidrantePorId(int id){
+
+        Cursor cursor = mDB.rawQuery("SELECT * FROM HIDRANTES WHERE _id = "+id, null);
+        cursor.moveToFirst();
+        Hidrante hidrante= new Hidrante(cursor.getInt(0),
+                cursor.getString(1),
+                cursor.getString(2),
+                cursor.getString(3).charAt(0),
+                cursor.getInt(4),
+                cursor.getInt(5),
+                cursor.getInt(6),
+                cursor.getString(7),
+                cursor.getBlob(8),
+                cursor.getString(9));
+        return hidrante;
+    }
 
     public Cursor borrarTodosLosHidrantes(){
         return mDB.rawQuery("DELETE FROM HIDRANTES", null);

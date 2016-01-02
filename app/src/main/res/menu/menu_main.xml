@@ -4,5 +4,6 @@
     <item android:id="@+id/action_settings" android:title="Ajustes"
         android:orderInCategory="200" app:showAsAction="never" />
     <item android:id="@+id/sync" android:title="Sincronizar"
-        android:orderInCategory="100" app:showAsAction="never" />
+        android:orderInCategory="100" app:showAsAction="never"
+        android:onClick="sincronizar"/>
 </menu>
