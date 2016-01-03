@@ -27,19 +27,21 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import ec.edu.espol.hidrantescerca.BD.DBSync;
 import ec.edu.espol.hidrantescerca.BD.LocalDB;
 import ec.edu.espol.hidrantescerca.BD.SyncTaskCompleted;
-import ec.edu.espol.hidrantescerca.Entidades.Hidrante;
+import ec.edu.espol.hidrantescerca.Entidades.Marcador;
 import ec.edu.espol.hidrantescerca.R;
 import ec.edu.espol.hidrantescerca.Utils.Utils;
 
 public class Mapa extends AppCompatActivity implements SyncTaskCompleted {
 
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
-    ArrayList<Hidrante> hidrantes = new ArrayList<>();
-    LocalDB ldb ;
+    ArrayList<Marcador> marcadores = new ArrayList<>();
+    LocalDB ldb;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,7 +69,6 @@ public class Mapa extends AppCompatActivity implements SyncTaskCompleted {
 
                 // Clears the previously touched position
                 mMap.clear();
-                //Hidrantes = ldb.getHidrantes();
                 dibujarHidrantes();
 
                 // Animating to the touched position
@@ -89,7 +90,7 @@ public class Mapa extends AppCompatActivity implements SyncTaskCompleted {
                 int id;
                 try {
                     id = Integer.valueOf(marker.getTitle().split(" | ")[0]);
-                }catch(NumberFormatException e){
+                } catch (NumberFormatException e) {
                     id = -1;
                 }
                 Bundle bundle = new Bundle();
@@ -110,7 +111,7 @@ public class Mapa extends AppCompatActivity implements SyncTaskCompleted {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(resultCode==2){
+        if (resultCode == 2) {
             finish();
         }
     }
@@ -169,27 +170,74 @@ public class Mapa extends AppCompatActivity implements SyncTaskCompleted {
         dibujarHidrantes();
     }
 
-    public void abrirLista(View view){
+    public void abrirLista(View view) {
         Intent intent = new Intent(this, Lista.class);
         startActivity(intent);
     }
 
-    public void sincronizar(MenuItem menuItem){
+    public void sincronizar(MenuItem menuItem) {
         new DBSync(this).execute(this);
     }
 
+    public void masCercano(View view) {
+        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        Criteria criteria = new Criteria();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    public void requestPermissions(@NonNull String[] permissions, int requestCode)
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for Activity#requestPermissions for more details.
+                return;
+            }
+        }
+        Location location = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false));
+        int minIndex = -1;
+        float minDist = Float.MAX_VALUE;
+        int size = this.marcadores.size();
+        float distancia = 0;
+        for(int i = 0; i < size; i++){
+            Marcador m = this.marcadores.get(i);
+            Location marcador = new Location("Marcador");
+            marcador.setLatitude(m.getPosicion().latitude);
+            marcador.setLongitude(m.getPosicion().longitude);
+            marcador.setTime(new Date().getTime());
+            distancia = location.distanceTo(marcador);
+            if(distancia < minDist) {
+                minDist = distancia;
+                minIndex = i;
+            }
+            if(minIndex >= 0){
+                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(
+                        new LatLng(marcadores.get(minIndex).getPosicion().latitude, marcadores.get(minIndex).getPosicion().longitude), 13));
+
+                CameraPosition cameraPosition = new CameraPosition.Builder()
+                        .target(new LatLng(marcadores.get(minIndex).getPosicion().latitude, marcadores.get(minIndex).getPosicion().longitude))      // Sets the center of the map to location user
+                        .zoom(17)                   // Sets the zoom
+                        .bearing(0)                // Sets the orientation of the camera to east
+                        .tilt(0)                   // Sets the tilt of the camera to 30 degrees
+                        .build();                   // Creates a CameraPosition from the builder
+                mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+
+            }
+        }
+
+    }
+
     public void dibujarHidrantes(){
-        this.hidrantes = ldb.getHidrantes();
-        if(!this.hidrantes.isEmpty()){
-            for (Hidrante h : this.hidrantes){
-                String[] latlng = h.getPosicion().split("&");
+        this.marcadores = ldb.getMarcadores();
+        if(!this.marcadores.isEmpty()){
+            for (Marcador m : this.marcadores){
                 mMap.addMarker(new MarkerOptions()
-                        .position(new LatLng(Double.parseDouble(latlng[0]), Double.parseDouble(latlng[1])))
-                        .title(h.getId() + " | " + h.getNombre())
-                        .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_hidrante)));
+                        .position(m.getPosicion())
+                        .title(m.getId() + " | " + m.getTitulo())
+                        .icon(m.getIcono()));
             }
         } else{
-            Utils.alerta("Error", "No hay hidrantes", this);
+            Utils.alerta("Error", "No hay marcadores", this);
         }
     }
 

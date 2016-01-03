@@ -6,11 +6,13 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Base64;
+
+import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
 
 import ec.edu.espol.hidrantescerca.Entidades.Hidrante;
+import ec.edu.espol.hidrantescerca.Entidades.Marcador;
 import ec.edu.espol.hidrantescerca.Entidades.Movimiento;
 
 /**
@@ -117,6 +119,24 @@ public class LocalDB extends SQLiteOpenHelper {
             }
         }
         return hidrantes;
+    }
+
+    public ArrayList<Marcador> getMarcadores(){
+        ArrayList<Marcador> marcadores = new ArrayList<>();
+        Cursor cursor = mDB.rawQuery("SELECT _id, nombre, posicion FROM HIDRANTES", null);
+
+        if(cursor != null){
+            while (cursor.moveToNext()){
+                String[] latlng = cursor.getString(2).split("&");
+                Marcador m = new Marcador(
+                        cursor.getInt(0),
+                        cursor.getString(1),
+                        new LatLng(Double.parseDouble(latlng[0]),Double.parseDouble(latlng[1]))
+                );
+                marcadores.add(m);
+            }
+        }
+        return marcadores;
     }
 
     public Hidrante getHidrantePorId(int id){

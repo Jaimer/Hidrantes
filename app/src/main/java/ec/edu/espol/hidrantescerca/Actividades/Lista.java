@@ -23,10 +23,10 @@ public class Lista extends AppCompatActivity {
         setContentView(R.layout.activity_lista);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        ArrayList<Hidrante> hidrantes = cargarHidrantes();
-        if(!hidrantes.isEmpty()){
+        ArrayList<Hidrante> marcadores = cargarHidrantes();
+        if(!marcadores.isEmpty()){
             ListView lstv = (ListView)findViewById(R.id.lst_hidrantes);
-            ArrayAdapter<Hidrante> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, hidrantes);
+            ArrayAdapter<Hidrante> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, marcadores);
             lstv.setAdapter(adapter);
         }
     }
@@ -60,7 +60,7 @@ public class Lista extends AppCompatActivity {
         }else{
             new AlertDialog.Builder(this)
                     .setTitle("Atención")
-                    .setMessage("No hay hidrantes registrados!")
+                    .setMessage("No hay marcadores registrados!")
                     .setNeutralButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             // algo
