@@ -84,7 +84,7 @@ public class Mapa extends AppCompatActivity implements SyncTaskCompleted {
         mMap.setOnInfoWindowClickListener(new OnInfoWindowClickListener() {
             @Override
             public void onInfoWindowClick(Marker marker) {
-                Intent intent = new Intent(Mapa.this, NuevoHidrante.class);
+                Intent intent = new Intent(Mapa.this, DetallesHidrante.class);
                 LatLng pos = marker.getPosition();
                 int id;
                 try {

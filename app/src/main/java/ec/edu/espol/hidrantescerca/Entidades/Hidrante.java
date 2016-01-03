@@ -148,6 +148,7 @@ public class Hidrante {
     public String toJSON(){
         JSONObject jsonObject = new JSONObject();
         try{
+            jsonObject.put("_id", getId());
             jsonObject.put("nombre",getNombre());
             jsonObject.put("posicion",getPosicion());
             jsonObject.put("estado", ""+getEstado());

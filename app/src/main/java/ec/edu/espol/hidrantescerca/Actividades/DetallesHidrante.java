@@ -1,5 +1,7 @@
 package ec.edu.espol.hidrantescerca.Actividades;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -24,10 +26,11 @@ import ec.edu.espol.hidrantescerca.Entidades.Movimiento;
 import ec.edu.espol.hidrantescerca.R;
 import ec.edu.espol.hidrantescerca.Utils.Utils;
 
-public class NuevoHidrante extends AppCompatActivity implements InsHidranteRDBTaskCompleted{
+public class DetallesHidrante extends AppCompatActivity implements InsHidranteRDBTaskCompleted{
     static final int REQUEST_IMAGE_CAPTURE = 1;
     private boolean fotoTomada = false;
     private Hidrante hidrante;
+    private int id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,11 +39,13 @@ public class NuevoHidrante extends AppCompatActivity implements InsHidranteRDBTa
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         Bundle bundle = getIntent().getParcelableExtra("bundle");
-        int id = bundle.getInt("id");
+        id = bundle.getInt("id");
         if(id != -1){
             LocalDB db = new LocalDB(this);
             Hidrante hidrante = db.getHidrantePorId(id);
-
+            if(hidrante.getFoto().length !=0){
+                fotoTomada = true;
+            }
             EditText nombre = (EditText)findViewById(R.id.txt_nombre);
             EditText lat = (EditText)findViewById(R.id.txt_lat);
             EditText lng = (EditText)findViewById(R.id.txt_lng);
@@ -111,16 +116,32 @@ public class NuevoHidrante extends AppCompatActivity implements InsHidranteRDBTa
         posicion.append("&");
         posicion.append(lng.getText().toString());
 
-        hidrante = new Hidrante(nombre.getText().toString(),
-                posicion.toString(),
-                estado.getSelectedItem().toString().charAt(0),
-                Integer.valueOf(psi.getText().toString()),
-                Integer.valueOf(tomas4.getText().toString()),
-                Integer.valueOf(tomas2_5.getText().toString()),
-                acople.getText().toString(),
-                imagen,
-                obs.getText().toString()
-        );
+        if(id == -1) {
+            hidrante = new Hidrante(
+                    nombre.getText().toString(),
+                    posicion.toString(),
+                    estado.getSelectedItem().toString().charAt(0),
+                    Integer.valueOf(psi.getText().toString()),
+                    Integer.valueOf(tomas4.getText().toString()),
+                    Integer.valueOf(tomas2_5.getText().toString()),
+                    acople.getText().toString(),
+                    imagen,
+                    obs.getText().toString()
+            );
+        }else{
+            hidrante = new Hidrante(
+                    id,
+                    nombre.getText().toString(),
+                    posicion.toString(),
+                    estado.getSelectedItem().toString().charAt(0),
+                    Integer.valueOf(psi.getText().toString()),
+                    Integer.valueOf(tomas4.getText().toString()),
+                    Integer.valueOf(tomas2_5.getText().toString()),
+                    acople.getText().toString(),
+                    imagen,
+                    obs.getText().toString()
+            );
+        }
         new InsertarHidranteRDB(this).execute(hidrante);
 
     }
@@ -150,7 +171,21 @@ public class NuevoHidrante extends AppCompatActivity implements InsHidranteRDBTa
             this.hidrante.setId(movimiento.getId_hidrante());
             ldb.insertarHidrante(this.hidrante);
             ldb.insertarMovimiento(movimiento);
-            Utils.alerta("Guardar", "Hidrante guardado", this);
+            //Utils.alerta("Guardar", "Hidrante guardado", this);
+           AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                    builder.setTitle("Guardar")
+                    .setMessage("Hidrante Guardado")
+                    .setNeutralButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            // algo
+                            finish();
+                        }
+                    })
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .show();
+
+
+
         }else{
             Utils.alerta("Guardar", "Error al guardar Hidrante", this);
         }
