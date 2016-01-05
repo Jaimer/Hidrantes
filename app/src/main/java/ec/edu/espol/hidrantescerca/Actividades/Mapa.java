@@ -233,7 +233,7 @@ public class Mapa extends AppCompatActivity implements SyncTaskCompleted {
             for (Marcador m : this.marcadores){
                 mMap.addMarker(new MarkerOptions()
                         .position(m.getPosicion())
-                        .title(m.getId() + " | " + m.getTitulo())
+                        .title(m.toString())
                         .icon(m.getIcono()));
             }
         } else{

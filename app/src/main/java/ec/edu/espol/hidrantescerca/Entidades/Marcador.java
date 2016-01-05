@@ -1,27 +1,30 @@
 package ec.edu.espol.hidrantescerca.Entidades;
 
-import android.graphics.Bitmap;
-
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
+
+import java.util.Comparator;
 
 import ec.edu.espol.hidrantescerca.R;
 
 /**
  * Created by jaime on 3/1/2016.
  */
-public class Marcador {
+public class Marcador implements Comparator<Marcador>{
     private int id;
     private String titulo;
     private LatLng posicion;
     private BitmapDescriptor icono = BitmapDescriptorFactory.fromResource(R.mipmap.ic_hidrante);
+    private Float distancia;
 
     public Marcador(int id, String titulo, LatLng posicion) {
         this.id = id;
         this.titulo = titulo;
         this.posicion = posicion;
+    }
+
+    public Marcador() {
     }
 
     public int getId() {
@@ -54,5 +57,23 @@ public class Marcador {
 
     public void setIcono(BitmapDescriptor icono) {
         this.icono = icono;
+    }
+
+    @Override
+    public String toString() {
+        return "" + id +  " | " + titulo ;
+    }
+
+    @Override
+    public int compare(Marcador lhs, Marcador rhs) {
+        return lhs.getDistancia().compareTo(rhs.getDistancia());
+    }
+
+    public Float getDistancia() {
+        return distancia;
+    }
+
+    public void setDistancia(Float distancia) {
+        this.distancia = distancia;
     }
 }
