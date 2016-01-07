@@ -123,7 +123,7 @@ public class LocalDB extends SQLiteOpenHelper {
 
     public ArrayList<Marcador> getMarcadores(){
         ArrayList<Marcador> marcadores = new ArrayList<>();
-        Cursor cursor = mDB.rawQuery("SELECT _id, nombre, posicion FROM HIDRANTES", null);
+        Cursor cursor = mDB.rawQuery("SELECT _id, nombre, posicion, estado FROM HIDRANTES", null);
 
         if(cursor != null){
             while (cursor.moveToNext()){
@@ -131,7 +131,8 @@ public class LocalDB extends SQLiteOpenHelper {
                 Marcador m = new Marcador(
                         cursor.getInt(0),
                         cursor.getString(1),
-                        new LatLng(Double.parseDouble(latlng[0]),Double.parseDouble(latlng[1]))
+                        new LatLng(Double.parseDouble(latlng[0]),Double.parseDouble(latlng[1])),
+                        cursor.getString(3).charAt(0)
                 );
                 marcadores.add(m);
             }

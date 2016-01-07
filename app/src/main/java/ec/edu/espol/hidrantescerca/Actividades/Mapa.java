@@ -50,6 +50,7 @@ public class Mapa extends AppCompatActivity implements SyncTaskCompleted {
         setSupportActionBar(toolbar);
         this.ldb = new LocalDB(this);
         setUpMapIfNeeded();
+        new DBSync(this).execute(this);
         //Dibuja un marcador en el punto donde el usuario toco el mapa y centra la vista a ese punto
         mMap.setOnMapClickListener(new OnMapClickListener() {
 
@@ -120,6 +121,7 @@ public class Mapa extends AppCompatActivity implements SyncTaskCompleted {
     protected void onResume() {
         super.onResume();
         setUpMapIfNeeded();
+        dibujarHidrantes();
     }
 
     private void setUpMapIfNeeded() {
@@ -166,8 +168,7 @@ public class Mapa extends AppCompatActivity implements SyncTaskCompleted {
             mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
         }
 
-        mMap.clear();
-        dibujarHidrantes();
+       dibujarHidrantes();
     }
 
     public void abrirLista(View view) {
@@ -179,7 +180,7 @@ public class Mapa extends AppCompatActivity implements SyncTaskCompleted {
         new DBSync(this).execute(this);
     }
 
-    public void masCercano(View view) {
+    public void masCercano(View view) {//Quise implementar un metodo parecido a la actividad lista pero salia al reves ???? Lo dejo como estaba.
         LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         Criteria criteria = new Criteria();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -201,40 +202,44 @@ public class Mapa extends AppCompatActivity implements SyncTaskCompleted {
         float distancia = 0;
         for(int i = 0; i < size; i++){
             Marcador m = this.marcadores.get(i);
-            Location marcador = new Location("Marcador");
-            marcador.setLatitude(m.getPosicion().latitude);
-            marcador.setLongitude(m.getPosicion().longitude);
-            marcador.setTime(new Date().getTime());
-            distancia = location.distanceTo(marcador);
-            if(distancia < minDist) {
-                minDist = distancia;
-                minIndex = i;
-            }
-            if(minIndex >= 0){
-                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(
-                        new LatLng(marcadores.get(minIndex).getPosicion().latitude, marcadores.get(minIndex).getPosicion().longitude), 13));
-
-                CameraPosition cameraPosition = new CameraPosition.Builder()
-                        .target(new LatLng(marcadores.get(minIndex).getPosicion().latitude, marcadores.get(minIndex).getPosicion().longitude))      // Sets the center of the map to location user
-                        .zoom(17)                   // Sets the zoom
-                        .bearing(0)                // Sets the orientation of the camera to east
-                        .tilt(0)                   // Sets the tilt of the camera to 30 degrees
-                        .build();                   // Creates a CameraPosition from the builder
-                mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-
+            if(m.getEstado() == 'A') {
+                Location marcador = new Location("Marcador");
+                marcador.setLatitude(m.getPosicion().latitude);
+                marcador.setLongitude(m.getPosicion().longitude);
+                marcador.setTime(new Date().getTime());
+                distancia = location.distanceTo(marcador);
+                if (distancia < minDist) {
+                    minDist = distancia;
+                    minIndex = i;
+                }
             }
         }
+        if(minIndex >= 0){
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(
+                    new LatLng(marcadores.get(minIndex).getPosicion().latitude, marcadores.get(minIndex).getPosicion().longitude), 13));
 
+            CameraPosition cameraPosition = new CameraPosition.Builder()
+                    .target(new LatLng(marcadores.get(minIndex).getPosicion().latitude, marcadores.get(minIndex).getPosicion().longitude))      // Sets the center of the map to location user
+                    .zoom(17)                   // Sets the zoom
+                    .bearing(0)                // Sets the orientation of the camera to east
+                    .tilt(0)                   // Sets the tilt of the camera to 30 degrees
+                    .build();                   // Creates a CameraPosition from the builder
+            mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+
+        }
     }
 
     public void dibujarHidrantes(){
+        mMap.clear();
         this.marcadores = ldb.getMarcadores();
         if(!this.marcadores.isEmpty()){
             for (Marcador m : this.marcadores){
-                mMap.addMarker(new MarkerOptions()
-                        .position(m.getPosicion())
-                        .title(m.toString())
-                        .icon(m.getIcono()));
+                if(m.getEstado() != 'E') {
+                    mMap.addMarker(new MarkerOptions()
+                            .position(m.getPosicion())
+                            .title(m.toString())
+                            .icon(m.getIcono()));
+                }
             }
         } else{
             Utils.alerta("Error", "No hay marcadores", this);

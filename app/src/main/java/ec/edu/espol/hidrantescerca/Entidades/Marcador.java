@@ -15,13 +15,20 @@ public class Marcador implements Comparator<Marcador>{
     private int id;
     private String titulo;
     private LatLng posicion;
-    private BitmapDescriptor icono = BitmapDescriptorFactory.fromResource(R.mipmap.ic_hidrante);
+    private BitmapDescriptor icono;
     private Float distancia;
+    private char estado;
 
-    public Marcador(int id, String titulo, LatLng posicion) {
+    public Marcador(int id, String titulo, LatLng posicion, char estado) {
         this.id = id;
         this.titulo = titulo;
         this.posicion = posicion;
+        this.estado = estado;
+        if(estado == 'A'){
+            this.icono = BitmapDescriptorFactory.fromResource(R.mipmap.ic_hidrante);
+        }else{
+            this.icono = BitmapDescriptorFactory.fromResource(R.mipmap.ic_hidrante_black);
+        }
     }
 
     public Marcador() {
@@ -61,7 +68,7 @@ public class Marcador implements Comparator<Marcador>{
 
     @Override
     public String toString() {
-        return "" + id +  " | " + titulo ;
+        return "" + id +  " | " + titulo + " | " + estado ;
     }
 
     @Override
@@ -75,5 +82,13 @@ public class Marcador implements Comparator<Marcador>{
 
     public void setDistancia(Float distancia) {
         this.distancia = distancia;
+    }
+
+    public char getEstado() {
+        return estado;
+    }
+
+    public void setEstado(char estado) {
+        this.estado = estado;
     }
 }

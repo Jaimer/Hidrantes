@@ -63,6 +63,7 @@ public class Lista extends AppCompatActivity {
     }
 
     public ArrayList<Marcador> obtenerDistancias(ArrayList<Marcador> marcadores){
+        ArrayList<Marcador> activos = new ArrayList<>();
         LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         Criteria criteria = new Criteria();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -78,12 +79,15 @@ public class Lista extends AppCompatActivity {
         }
         Location location = locationManager.getLastKnownLocation(locationManager.getBestProvider(criteria, false));
         for(Marcador m : marcadores) {
-            Location marcador = new Location("Marcador");
-            marcador.setLatitude(m.getPosicion().latitude);
-            marcador.setLongitude(m.getPosicion().longitude);
-            marcador.setTime(new Date().getTime());
-            m.setDistancia(location.distanceTo(marcador));
+            //if(m.getEstado() != 'E') { //No mostrar los eliminados. Se quita ya que despues no se puede administrar hidrantes eliminados.
+                Location marcador = new Location("Marcador");
+                marcador.setLatitude(m.getPosicion().latitude);
+                marcador.setLongitude(m.getPosicion().longitude);
+                marcador.setTime(new Date().getTime());
+                m.setDistancia(location.distanceTo(marcador));
+                activos.add(m);
+            //}
         }
-        return marcadores;
+        return activos;
     }
 }
