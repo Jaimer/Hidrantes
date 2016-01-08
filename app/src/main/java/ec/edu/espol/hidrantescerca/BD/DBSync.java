@@ -131,6 +131,8 @@ public class DBSync extends AsyncTask<Context, Integer, String> {
             }
         } catch (JSONException e) {
             e.printStackTrace();
+        }catch (NullPointerException e){
+            resultado = "No se obtuvo respuesta del servidor";
         }
 
         return resultado;

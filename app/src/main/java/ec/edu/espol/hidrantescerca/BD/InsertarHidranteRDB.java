@@ -45,7 +45,7 @@ public class InsertarHidranteRDB extends AsyncTask<Hidrante, Integer, String> {
         String respuesta = null;
         String estado;
         String hidrante = params[0].toJSON();
-        Log.d("Hidrante", hidrante);
+
         try {
             URL url = new URL(Config.setHidranteURL);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -59,10 +59,10 @@ public class InsertarHidranteRDB extends AsyncTask<Hidrante, Integer, String> {
             conn.setRequestProperty("Content-Type", "application/json; charset=utf-8");
             conn.connect();
 
-            //BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream(), "UTF-8"));
-            //bufferedWriter.write(hidrante);
-            DataOutputStream dataout = new DataOutputStream(conn.getOutputStream());
-            dataout.writeBytes(hidrante);
+            BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream(), "UTF-8"));
+            bw.write(hidrante);
+            bw.flush();
+            bw.close();
 
             int status = conn.getResponseCode();
             switch (status){
@@ -77,7 +77,6 @@ public class InsertarHidranteRDB extends AsyncTask<Hidrante, Integer, String> {
                         result.append(linea);
                     }
 
-                    Log.d("Respuesta", result.toString());
                     JSONObject resp = new JSONObject(result.toString());
                     estado = resp.getString("estado");
                     if(estado.equals("1")){
@@ -102,6 +101,7 @@ public class InsertarHidranteRDB extends AsyncTask<Hidrante, Integer, String> {
             e.printStackTrace();
         } catch (IOException e) {
             Log.d("Error", "Error de Lectura");
+            respuesta = "0";
         } catch (JSONException e) {
             e.printStackTrace();
         }

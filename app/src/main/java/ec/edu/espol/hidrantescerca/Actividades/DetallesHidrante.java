@@ -92,6 +92,7 @@ public class DetallesHidrante extends AppCompatActivity implements InsHidranteRD
 
     public void guardarHidrante(View view){
 
+        //TODO: Validar que no haya cajas vacias. Poner texto por defecto a las cajas opcionales
         EditText nombre = (EditText)findViewById(R.id.txt_nombre);
         EditText lat = (EditText)findViewById(R.id.txt_lat);
         EditText lng = (EditText)findViewById(R.id.txt_lng);
