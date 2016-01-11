@@ -14,6 +14,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -34,7 +36,6 @@ import ec.edu.espol.hidrantescerca.BD.LocalDB;
 import ec.edu.espol.hidrantescerca.BD.SyncTaskCompleted;
 import ec.edu.espol.hidrantescerca.Entidades.Marcador;
 import ec.edu.espol.hidrantescerca.R;
-import ec.edu.espol.hidrantescerca.Utils.Utils;
 
 public class Mapa extends AppCompatActivity implements SyncTaskCompleted {
 
@@ -44,6 +45,7 @@ public class Mapa extends AppCompatActivity implements SyncTaskCompleted {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapa);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -51,6 +53,7 @@ public class Mapa extends AppCompatActivity implements SyncTaskCompleted {
         this.ldb = new LocalDB(this);
         setUpMapIfNeeded();
         new DBSync(this).execute(this);
+        mMap.getUiSettings().setMapToolbarEnabled(false);
         //Dibuja un marcador en el punto donde el usuario toco el mapa y centra la vista a ese punto
         mMap.setOnMapClickListener(new OnMapClickListener() {
 
@@ -171,7 +174,7 @@ public class Mapa extends AppCompatActivity implements SyncTaskCompleted {
        dibujarHidrantes();
     }
 
-    public void abrirLista(View view) {
+    public void abrirLista(MenuItem menuItem) {
         Intent intent = new Intent(this, Lista.class);
         startActivity(intent);
     }
@@ -181,6 +184,7 @@ public class Mapa extends AppCompatActivity implements SyncTaskCompleted {
     }
 
     public void masCercano(View view) {//Quise implementar un metodo parecido a la actividad lista pero salia al reves ???? Lo dejo como estaba.
+        Toast.makeText(this, "Buscando Hidrante activo mas cercano", Toast.LENGTH_LONG).show();
         LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         Criteria criteria = new Criteria();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -242,13 +246,13 @@ public class Mapa extends AppCompatActivity implements SyncTaskCompleted {
                 }
             }
         } else{
-            Utils.alerta("Error", "No hay marcadores", this);
+            Toast.makeText(this, "Error: No hay marcadores", Toast.LENGTH_LONG).show();
         }
     }
 
     @Override
     public void onSyncTaskCompleted(String resultado) {
         dibujarHidrantes();
-        Utils.alerta("Sincronizacion", resultado, this);
+        Toast.makeText(this, "Sincronización: "+resultado, Toast.LENGTH_LONG).show();
     }
 }

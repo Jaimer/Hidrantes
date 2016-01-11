@@ -102,7 +102,7 @@ public class LocalDB extends SQLiteOpenHelper {
     public ArrayList<Hidrante> getHidrantes(){
         ArrayList<Hidrante> hidrantes = new ArrayList<>();
         Cursor cursor = mDB.rawQuery("SELECT * FROM HIDRANTES", null);
-
+        mDB.close();
         if(cursor != null){
             while (cursor.moveToNext()){
                 Hidrante hidrante= new Hidrante(cursor.getInt(0),
@@ -118,13 +118,13 @@ public class LocalDB extends SQLiteOpenHelper {
                 hidrantes.add(hidrante);
             }
         }
+        cursor.close();
         return hidrantes;
     }
 
     public ArrayList<Marcador> getMarcadores(){
         ArrayList<Marcador> marcadores = new ArrayList<>();
         Cursor cursor = mDB.rawQuery("SELECT _id, nombre, posicion, estado FROM HIDRANTES", null);
-
         if(cursor != null){
             while (cursor.moveToNext()){
                 String[] latlng = cursor.getString(2).split("&");
@@ -137,6 +137,7 @@ public class LocalDB extends SQLiteOpenHelper {
                 marcadores.add(m);
             }
         }
+        cursor.close();
         return marcadores;
     }
 
@@ -154,6 +155,7 @@ public class LocalDB extends SQLiteOpenHelper {
                 cursor.getString(7),
                 cursor.getBlob(8),
                 cursor.getString(9));
+        cursor.close();
         return hidrante;
     }
 
@@ -169,6 +171,7 @@ public class LocalDB extends SQLiteOpenHelper {
             movimientos = cursor.getInt(0);
 
         }
+        cursor.close();
         return movimientos;
     }
 

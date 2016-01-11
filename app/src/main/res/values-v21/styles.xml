@@ -4,5 +4,11 @@
         <item name="windowNoTitle">true</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
+
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowEnterTransition">@transition/slide_transition</item>
+        <item name="android:windowExitTransition">@transition/slide_transition</item>
+        <item name="android:windowReenterTransition">@transition/slide_transition</item>
+        <item name="android:windowReturnTransition">@transition/slide_transition</item>
     </style>
 </resources>

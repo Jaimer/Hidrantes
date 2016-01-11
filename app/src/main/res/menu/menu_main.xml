@@ -2,8 +2,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" tools:context=".Main">
     <item android:id="@+id/action_settings" android:title="Ajustes"
-        android:orderInCategory="200" app:showAsAction="never" />
+        android:orderInCategory="300" app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_settings"/>
+    <item android:id="@+id/action_lista" android:title="Lista de Hidrantes"
+        android:orderInCategory="200" app:showAsAction="ifRoom"
+        android:onClick="abrirLista"
+        android:icon="@drawable/ic_list"/>
     <item android:id="@+id/sync" android:title="Sincronizar"
-        android:orderInCategory="100" app:showAsAction="never"
-        android:onClick="sincronizar"/>
+        android:orderInCategory="100" app:showAsAction="ifRoom"
+        android:onClick="sincronizar"
+        android:icon="@drawable/ic_sync"/>
 </menu>

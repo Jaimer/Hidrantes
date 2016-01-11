@@ -10,10 +10,14 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.transition.Slide;
 import android.view.View;
+import android.view.Window;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Toast;
+
 import com.google.android.gms.maps.model.LatLng;
 
 import java.io.ByteArrayOutputStream;
@@ -24,7 +28,6 @@ import ec.edu.espol.hidrantescerca.BD.LocalDB;
 import ec.edu.espol.hidrantescerca.Entidades.Hidrante;
 import ec.edu.espol.hidrantescerca.Entidades.Movimiento;
 import ec.edu.espol.hidrantescerca.R;
-import ec.edu.espol.hidrantescerca.Utils.Utils;
 
 public class DetallesHidrante extends AppCompatActivity implements InsHidranteRDBTaskCompleted{
     static final int REQUEST_IMAGE_CAPTURE = 1;
@@ -34,6 +37,7 @@ public class DetallesHidrante extends AppCompatActivity implements InsHidranteRD
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nuevo_hidrante);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -172,23 +176,24 @@ public class DetallesHidrante extends AppCompatActivity implements InsHidranteRD
             this.hidrante.setId(movimiento.getId_hidrante());
             ldb.insertarHidrante(this.hidrante);
             ldb.insertarMovimiento(movimiento);
-            //Utils.alerta("Guardar", "Hidrante guardado", this);
-           AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                    builder.setTitle("Guardar")
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Guardar")
                     .setMessage("Hidrante Guardado")
                     .setNeutralButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
-                            // algo
+                            Slide slide = null;
+                            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+                                slide = new Slide();
+                                slide.setDuration(500);
+                                getWindow().setExitTransition(slide);
+                            }
                             finish();
                         }
                     })
-                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .setIcon(android.R.drawable.ic_dialog_info)
                     .show();
-
-
-
         }else{
-            Utils.alerta("Guardar", "Error al guardar Hidrante", this);
+            Toast.makeText(this, "Error al guardar el hidrante", Toast.LENGTH_LONG).show();
         }
     }
 }
