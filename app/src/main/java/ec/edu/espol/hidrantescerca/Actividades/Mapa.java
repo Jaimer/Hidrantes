@@ -170,8 +170,6 @@ public class Mapa extends AppCompatActivity implements SyncTaskCompleted {
                     .build();                   // Creates a CameraPosition from the builder
             mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
         }
-
-       dibujarHidrantes();
     }
 
     public void abrirLista(MenuItem menuItem) {
@@ -246,13 +244,13 @@ public class Mapa extends AppCompatActivity implements SyncTaskCompleted {
                 }
             }
         } else{
-            Toast.makeText(this, "Error: No hay marcadores", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Atención: No hay hidrantes en la base local", Toast.LENGTH_LONG).show();
         }
     }
 
     @Override
     public void onSyncTaskCompleted(String resultado) {
-        dibujarHidrantes();
         Toast.makeText(this, "Sincronización: "+resultado, Toast.LENGTH_LONG).show();
+        dibujarHidrantes();
     }
 }

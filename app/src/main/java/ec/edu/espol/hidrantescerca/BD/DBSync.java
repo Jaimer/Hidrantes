@@ -1,5 +1,6 @@
 package ec.edu.espol.hidrantescerca.BD;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Debug;
@@ -28,16 +29,18 @@ import ec.edu.espol.hidrantescerca.Utils.Config;
  */
 public class DBSync extends AsyncTask<Context, Integer, String> {
     private SyncTaskCompleted listener;
+    private ProgressDialog dialog;
 
     public DBSync(SyncTaskCompleted listener) {
         this.listener = listener;
+        this.dialog = new ProgressDialog((Context)listener);
     }
 
 
     @Override
     protected String doInBackground(Context... params) {
         Context context = params[0];
-        //Debug.waitForDebugger();
+        //Debug.waitForDebugger(); Debuggin'
         String response = null;
         String resultado = null;
         int localmovs;
@@ -84,6 +87,8 @@ public class DBSync extends AsyncTask<Context, Integer, String> {
             if(mensaje.equals("Actualizacion Cliente")){
 
                 JSONArray mData = resp.getJSONArray("Movimientos");
+
+                // dialog.setMax(mData.length()*2); Para barra de prograso
                 for(int i=0; i < mData.length(); i++){
                     JSONObject mObj = mData.getJSONObject(i);
                     Movimiento m = new Movimiento(
@@ -92,6 +97,7 @@ public class DBSync extends AsyncTask<Context, Integer, String> {
                             mObj.getString("fecha_mod"),
                             mObj.getString("usuario_mod"));
                     movimientos.add(m);
+                    // publishProgress(i); Para barra de prograso
                 }
 
                 JSONArray hData = resp.getJSONArray("Hidrantes");
@@ -116,6 +122,7 @@ public class DBSync extends AsyncTask<Context, Integer, String> {
                             foto,
                             hObj.getString("obs"));
                     hidrantes.add(h);
+                    // publishProgress(hData.length()+i); Para barra de prograso
                 }
                 if(movimientos.size() == hidrantes.size()){ //Deben haber la misma cantidad de movimientos e hidrantes
                     LocalDB db = new LocalDB(context);
@@ -139,8 +146,30 @@ public class DBSync extends AsyncTask<Context, Integer, String> {
     }
 
     @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+        dialog.setMessage("Sincronizando");
+        /* Barra de progreso determinada
+        dialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+        dialog.setIndeterminate(false);
+        */
+        dialog.show();
+    }
+
+    @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
+        if (dialog.isShowing()) {
+            dialog.dismiss();
+        }
         listener.onSyncTaskCompleted(s);
     }
+
+    /* Para barra de progreso determinada
+    @Override
+    protected void onProgressUpdate(Integer... values) {
+        super.onProgressUpdate(values);
+        dialog.setProgress(values[0]);
+    }
+    */
 }

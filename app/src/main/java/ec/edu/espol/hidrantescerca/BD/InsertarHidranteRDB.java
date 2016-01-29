@@ -1,5 +1,6 @@
 package ec.edu.espol.hidrantescerca.BD;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Debug;
@@ -33,15 +34,17 @@ public class InsertarHidranteRDB extends AsyncTask<Hidrante, Integer, String> {
     private InsHidranteRDBTaskCompleted listener;
     private  Movimiento movimiento;
     private Context context;
+    private ProgressDialog dialog;
 
     public InsertarHidranteRDB(InsHidranteRDBTaskCompleted listener) {
         this.listener = listener;
         this.context = (Context) listener;
+        this.dialog = new ProgressDialog((Context) listener);
     }
 
     @Override
     protected String doInBackground(Hidrante... params) {
-        //Debug.waitForDebugger();
+        Debug.waitForDebugger();
         String respuesta = null;
         String estado;
         String hidrante = params[0].toJSON();
@@ -110,8 +113,18 @@ public class InsertarHidranteRDB extends AsyncTask<Hidrante, Integer, String> {
     }
 
     @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+        dialog.setMessage("Guardando");
+        dialog.show();
+    }
+
+    @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
+        if (dialog.isShowing()) {
+            dialog.dismiss();
+        }
         if(s == null){
             Log.d("Error", "respuesta nula");
         }else{
