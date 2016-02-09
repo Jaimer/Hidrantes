@@ -44,7 +44,7 @@ public class InsertarHidranteRDB extends AsyncTask<Hidrante, Integer, String> {
 
     @Override
     protected String doInBackground(Hidrante... params) {
-        Debug.waitForDebugger();
+        //Debug.waitForDebugger();
         String respuesta = null;
         String estado;
         String hidrante = params[0].toJSON();
