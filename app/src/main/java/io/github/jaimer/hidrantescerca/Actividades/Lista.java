@@ -1,4 +1,4 @@
-package ec.edu.espol.hidrantescerca.Actividades;
+package io.github.jaimer.hidrantescerca.Actividades;
 
 import android.content.Intent;
 import android.location.Location;
@@ -17,9 +17,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 
-import ec.edu.espol.hidrantescerca.BD.LocalDB;
-import ec.edu.espol.hidrantescerca.Entidades.Marcador;
-import ec.edu.espol.hidrantescerca.R;
+import io.github.jaimer.hidrantescerca.BD.LocalDB;
+import io.github.jaimer.hidrantescerca.Entidades.Marcador;
+import io.github.jaimer.hidrantescerca.R;
 
 public class Lista extends AppCompatActivity {
     private Location userpos;

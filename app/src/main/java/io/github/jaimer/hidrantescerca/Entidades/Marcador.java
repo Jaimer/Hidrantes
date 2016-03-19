@@ -1,4 +1,4 @@
-package ec.edu.espol.hidrantescerca.Entidades;
+package io.github.jaimer.hidrantescerca.Entidades;
 
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
@@ -6,7 +6,7 @@ import com.google.android.gms.maps.model.LatLng;
 
 import java.util.Comparator;
 
-import ec.edu.espol.hidrantescerca.R;
+import io.github.jaimer.hidrantescerca.R;
 
 /**
  * Created by jaime on 3/1/2016.

@@ -1,4 +1,4 @@
-package ec.edu.espol.hidrantescerca.BD;
+package io.github.jaimer.hidrantescerca.BD;
 
 /**
  * Created by jaime on 26/12/2015.

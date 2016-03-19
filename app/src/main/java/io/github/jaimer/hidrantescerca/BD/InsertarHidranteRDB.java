@@ -1,31 +1,26 @@
-package ec.edu.espol.hidrantescerca.BD;
+package io.github.jaimer.hidrantescerca.BD;
 
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
-import android.os.Debug;
 import android.util.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 
-import ec.edu.espol.hidrantescerca.Entidades.Hidrante;
-import ec.edu.espol.hidrantescerca.Entidades.Movimiento;
-import ec.edu.espol.hidrantescerca.Utils.Config;
+import io.github.jaimer.hidrantescerca.Entidades.Hidrante;
+import io.github.jaimer.hidrantescerca.Entidades.Movimiento;
+import io.github.jaimer.hidrantescerca.Utils.Config;
 
 /**
  * Created by jaime on 26/12/2015.

@@ -1,6 +1,6 @@
-package ec.edu.espol.hidrantescerca.BD;
+package io.github.jaimer.hidrantescerca.BD;
 
-import ec.edu.espol.hidrantescerca.Entidades.Movimiento;
+import io.github.jaimer.hidrantescerca.Entidades.Movimiento;
 
 /**
  * Created by jaime on 26/12/2015.

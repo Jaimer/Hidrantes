@@ -1,4 +1,4 @@
-package ec.edu.espol.hidrantescerca.Actividades;
+package io.github.jaimer.hidrantescerca.Actividades;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -22,12 +22,12 @@ import com.google.android.gms.maps.model.LatLng;
 
 import java.io.ByteArrayOutputStream;
 
-import ec.edu.espol.hidrantescerca.BD.InsHidranteRDBTaskCompleted;
-import ec.edu.espol.hidrantescerca.BD.InsertarHidranteRDB;
-import ec.edu.espol.hidrantescerca.BD.LocalDB;
-import ec.edu.espol.hidrantescerca.Entidades.Hidrante;
-import ec.edu.espol.hidrantescerca.Entidades.Movimiento;
-import ec.edu.espol.hidrantescerca.R;
+import io.github.jaimer.hidrantescerca.BD.InsHidranteRDBTaskCompleted;
+import io.github.jaimer.hidrantescerca.BD.InsertarHidranteRDB;
+import io.github.jaimer.hidrantescerca.BD.LocalDB;
+import io.github.jaimer.hidrantescerca.Entidades.Hidrante;
+import io.github.jaimer.hidrantescerca.Entidades.Movimiento;
+import io.github.jaimer.hidrantescerca.R;
 
 public class DetallesHidrante extends AppCompatActivity implements InsHidranteRDBTaskCompleted{
     static final int REQUEST_IMAGE_CAPTURE = 1;

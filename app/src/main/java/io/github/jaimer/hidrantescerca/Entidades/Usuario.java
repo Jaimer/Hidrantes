@@ -1,4 +1,4 @@
-package ec.edu.espol.hidrantescerca.Entidades;
+package io.github.jaimer.hidrantescerca.Entidades;
 
 /**
  * Created by jaime on 14/12/2015.

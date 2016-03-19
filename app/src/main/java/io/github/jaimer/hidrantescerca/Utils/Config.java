@@ -1,4 +1,4 @@
-package ec.edu.espol.hidrantescerca.Utils;
+package io.github.jaimer.hidrantescerca.Utils;
 
 /**
  * Created by jaime on 6/12/2015.

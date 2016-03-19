@@ -1,4 +1,4 @@
-package ec.edu.espol.hidrantescerca.Entidades;
+package io.github.jaimer.hidrantescerca.Entidades;
 
 
 import android.util.Base64;

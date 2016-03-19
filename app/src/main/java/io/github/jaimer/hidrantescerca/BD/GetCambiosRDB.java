@@ -1,4 +1,4 @@
-package ec.edu.espol.hidrantescerca.BD;
+package io.github.jaimer.hidrantescerca.BD;
 
 import android.os.AsyncTask;
 

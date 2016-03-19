@@ -1,4 +1,4 @@
-package ec.edu.espol.hidrantescerca.BD;
+package io.github.jaimer.hidrantescerca.BD;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -11,9 +11,9 @@ import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
 
-import ec.edu.espol.hidrantescerca.Entidades.Hidrante;
-import ec.edu.espol.hidrantescerca.Entidades.Marcador;
-import ec.edu.espol.hidrantescerca.Entidades.Movimiento;
+import io.github.jaimer.hidrantescerca.Entidades.Hidrante;
+import io.github.jaimer.hidrantescerca.Entidades.Marcador;
+import io.github.jaimer.hidrantescerca.Entidades.Movimiento;
 
 /**
  * Created by jmoscoso on 27/10/2015.
