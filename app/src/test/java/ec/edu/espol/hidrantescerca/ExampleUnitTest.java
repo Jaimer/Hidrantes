@@ -1,4 +1,4 @@
-package ec.edu.espol.hidrantescerca;
+package io.github.jaimer.hidrantescerca;
 
 import org.junit.Test;
 

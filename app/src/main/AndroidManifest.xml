@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="ec.edu.espol.hidrantescerca" >
+    package="io.github.jaimer.hidrantescerca" >
 
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
@@ -24,7 +24,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".Actividades.Mapa"
+            android:name="io.github.jaimer.hidrantescerca.Actividades.Mapa"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
@@ -34,7 +34,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Actividades.Lista"
+            android:name="io.github.jaimer.hidrantescerca.Actividades.Lista"
             android:label="@string/title_activity_lista"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
@@ -50,7 +50,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
         <activity
-            android:name=".Actividades.DetallesHidrante"
+            android:name="io.github.jaimer.hidrantescerca.Actividades.DetallesHidrante"
             android:label="@string/title_activity_editar_hidrante"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
