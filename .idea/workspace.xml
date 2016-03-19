@@ -17,94 +17,17 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5e4659ea-b6cf-43c0-a4fb-95fa7775d7e6" name="Default" comment="Cambio en APP ID... Adiós ESPOL.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/cache.properties.lock" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileHashes.bin" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileSnapshots.bin" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_info_black_24dp.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/ic_info_black_24dp.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_info_black_24dp.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ic_info_black_24dp.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/ic_info_black_24dp.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_notifications_black_24dp.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/ic_notifications_black_24dp.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_notifications_black_24dp.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ic_notifications_black_24dp.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/ic_notifications_black_24dp.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_sync_black_24dp.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/ic_sync_black_24dp.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_sync_black_24dp.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ic_sync_black_24dp.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxxhdpi/ic_sync_black_24dp.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/outputFileStates.bin" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/taskArtifacts.bin" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/jaimer/hidrantescerca/Actividades/AjustesActivity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/jaimer/hidrantescerca/Actividades/AjustesFragment.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_ajustesactivity.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/xml/ajustes.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/animated_vector_drawable_23_2_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/appcompat_v7_23_2_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/cache.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/design_23_2_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-v21/ic_info_black_24dp.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-v21/ic_notifications_black_24dp.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-v21/ic_sync_black_24dp.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/mediarouter_v7_23_0_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/play_services_panorama_8_4_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/play_services_plus_8_4_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/play_services_wearable_8_4_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/recyclerview_v7_23_2_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/support_vector_drawable_23_2_1.xml" />
-      <change type="DELETED" beforePath="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\.idea\libraries\appcompat_v7_23_1_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\.idea\libraries\mediarouter_v7_22_2_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\.idea\libraries\play_services_panorama_8_1_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\.idea\libraries\play_services_wearable_8_1_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\.idea\libraries\recyclerview_v7_23_1_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\.idea\libraries\support_v4_23_1_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\src\main\java\io\github\jaimer\hidrantescerca\Utils\Utils.java" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\src\main\res\layout\activity_main.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\src\main\res\layout\content_main.xml" afterPath="" />
-      <change type="MOVED" beforePath="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\.idea\libraries\design_23_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/support_v4_23_2_1.xml" />
-      <change type="MOVED" beforePath="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\.idea\libraries\play_services_8_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/play_services_8_4_0.xml" />
-      <change type="MOVED" beforePath="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\.idea\libraries\play_services_ads_8_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/play_services_gcm_8_4_0.xml" />
-      <change type="MOVED" beforePath="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\.idea\libraries\play_services_analytics_8_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/play_services_analytics_8_4_0.xml" />
-      <change type="MOVED" beforePath="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\.idea\libraries\play_services_appindexing_8_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/play_services_measurement_8_4_0.xml" />
-      <change type="MOVED" beforePath="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\.idea\libraries\play_services_appinvite_8_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/play_services_appinvite_8_4_0.xml" />
-      <change type="MOVED" beforePath="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\.idea\libraries\play_services_appstate_8_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/play_services_appstate_8_4_0.xml" />
-      <change type="MOVED" beforePath="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\.idea\libraries\play_services_base_8_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/play_services_base_8_4_0.xml" />
-      <change type="MOVED" beforePath="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\.idea\libraries\play_services_basement_8_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/play_services_basement_8_4_0.xml" />
-      <change type="MOVED" beforePath="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\.idea\libraries\play_services_cast_8_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/play_services_auth_8_4_0.xml" />
-      <change type="MOVED" beforePath="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\.idea\libraries\play_services_drive_8_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/play_services_drive_8_4_0.xml" />
-      <change type="MOVED" beforePath="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\.idea\libraries\play_services_fitness_8_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/play_services_fitness_8_4_0.xml" />
-      <change type="MOVED" beforePath="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\.idea\libraries\play_services_games_8_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/play_services_games_8_4_0.xml" />
-      <change type="MOVED" beforePath="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\.idea\libraries\play_services_gcm_8_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/play_services_ads_8_4_0.xml" />
-      <change type="MOVED" beforePath="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\.idea\libraries\play_services_identity_8_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/play_services_identity_8_4_0.xml" />
-      <change type="MOVED" beforePath="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\.idea\libraries\play_services_location_8_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/play_services_location_8_4_0.xml" />
-      <change type="MOVED" beforePath="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\.idea\libraries\play_services_maps_8_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/play_services_cast_8_4_0.xml" />
-      <change type="MOVED" beforePath="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\.idea\libraries\play_services_measurement_8_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/play_services_appindexing_8_4_0.xml" />
-      <change type="MOVED" beforePath="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\.idea\libraries\play_services_nearby_8_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/play_services_nearby_8_4_0.xml" />
-      <change type="MOVED" beforePath="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\.idea\libraries\play_services_plus_8_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/play_services_maps_8_4_0.xml" />
-      <change type="MOVED" beforePath="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\.idea\libraries\play_services_safetynet_8_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/play_services_safetynet_8_4_0.xml" />
-      <change type="MOVED" beforePath="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\.idea\libraries\play_services_vision_8_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/play_services_vision_8_4_0.xml" />
-      <change type="MOVED" beforePath="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\.idea\libraries\play_services_wallet_8_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/play_services_wallet_8_4_0.xml" />
-      <change type="MOVED" beforePath="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\.idea\libraries\support_annotations_23_1_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/support_annotations_23_2_1.xml" />
-      <change type="MOVED" beforePath="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\.idea\workspace-DESKTOP-9OLCQ0B.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/io/github/jaimer/hidrantescerca/Utils/Config.java" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/jaimer/hidrantescerca/Utils/Config.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/io/github/jaimer/hidrantescerca/BD/DBSync.java" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/jaimer/hidrantescerca/BD/DBSync.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/test/java/ec/edu/espol/hidrantescerca/ExampleUnitTest.java" afterPath="$PROJECT_DIR$/app/src/test/java/ec/edu/espol/hidrantescerca/ExampleUnitTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/io/github/jaimer/hidrantescerca/BD/InsertarHidranteRDB.java" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/jaimer/hidrantescerca/BD/InsertarHidranteRDB.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/io/github/jaimer/hidrantescerca/Actividades/Mapa.java" afterPath="$PROJECT_DIR$/app/src/main/java/io/github/jaimer/hidrantescerca/Actividades/Mapa.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_lista.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_lista.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_mapa.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_mapa.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_nuevo_hidrante.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_nuevo_hidrante.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/content_lista.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/content_lista.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/content_nuevo_hidrante.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/content_nuevo_hidrante.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu_main.xml" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_main.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+    <list default="true" id="5e4659ea-b6cf-43c0-a4fb-95fa7775d7e6" name="Default" comment="Implementar ventana de opciones, parametrizar dirección del servidor, atribución.">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/cache.properties.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileHashes.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/fileSnapshots.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.4/taskArtifacts/taskArtifacts.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/appcompat_v7_23_2_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/appcompat_v7_23_2_1.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/design_23_2_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/design_23_2_1.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/mediarouter_v7_23_0_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/mediarouter_v7_23_0_0.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/recyclerview_v7_23_2_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/recyclerview_v7_23_2_1.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/support_v4_23_2_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/support_v4_23_2_1.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="HidrantesCerca.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -221,8 +144,8 @@
       <file leaf-file-name="ajustes.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/xml/ajustes.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5698324">
-              <caret line="18" column="78" selection-start-line="18" selection-start-column="78" selection-end-line="18" selection-end-column="78" />
+            <state vertical-scroll-proportion="0.6964618">
+              <caret line="22" column="19" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
               <folding>
                 <element signature="e#155#189#0" expanded="true" />
                 <element signature="e#245#271#0" expanded="true" />
@@ -1697,7 +1620,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca" value="4350724219410" />
+        <entry key="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca" value="4350745782239" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -2136,104 +2059,6 @@
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="xml" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HidrantesCerca" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="values" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="styles.xml" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResGroupNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HidrantesCerca" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="values" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HidrantesCerca" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HidrantesCerca" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="menu" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HidrantesCerca" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="res" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="layout" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -2383,20 +2208,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="Actividades" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HidrantesCerca" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="manifests" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidManifestsGroupNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -2636,7 +2447,7 @@
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928804" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32977462" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32977462" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977462" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -2674,7 +2485,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Cambio en APP ID... Adiós ESPOL." />
-    <option name="LAST_COMMIT_MESSAGE" value="Cambio en APP ID... Adiós ESPOL." />
+    <MESSAGE value="Implementar ventana de opciones, parametrizar dirección del servidor, atribución." />
+    <option name="LAST_COMMIT_MESSAGE" value="Implementar ventana de opciones, parametrizar dirección del servidor, atribución." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -2724,17 +2536,6 @@
             <element signature="e#2315#2340#0" expanded="true" />
           </folding>
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_lista.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_ajustesactivity.xml">
@@ -2853,10 +2654,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/content_lista.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/xml/ajustes.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5698324">
-          <caret line="18" column="78" selection-start-line="18" selection-start-column="78" selection-end-line="18" selection-end-column="78" />
+        <state vertical-scroll-proportion="0.6964618">
+          <caret line="22" column="19" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
           <folding>
             <element signature="e#155#189#0" expanded="true" />
             <element signature="e#245#271#0" expanded="true" />
