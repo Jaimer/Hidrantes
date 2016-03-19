@@ -11,4 +11,12 @@
         <item>Eliminado</item>
     </string-array>
     <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_activity_ajustes">Ajustes</string>
+    <string name="user_profile_group_title">Perfil de Usuario</string>
+    <string name="username_setting">Usuario</string>
+    <string name="username_setting_summary">Cambiar / cerrar sesión de usuario</string>
+    <string name="server_settings_group">Conexión al Servidor</string>
+    <string name="server_url_setting">URL del servidor</string>
+    <string name="server_url_setting_summary">URL del servidor de Hidrantes Cerca de tu organización</string>
+    <string name="about_group_title">Acerca de</string>
 </resources>

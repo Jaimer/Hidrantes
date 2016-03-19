@@ -27,14 +27,16 @@ import io.github.jaimer.hidrantescerca.Utils.Config;
  */
 public class InsertarHidranteRDB extends AsyncTask<Hidrante, Integer, String> {
     private InsHidranteRDBTaskCompleted listener;
-    private  Movimiento movimiento;
+    private Movimiento movimiento;
     private Context context;
     private ProgressDialog dialog;
+    private Config config;
 
     public InsertarHidranteRDB(InsHidranteRDBTaskCompleted listener) {
         this.listener = listener;
         this.context = (Context) listener;
         this.dialog = new ProgressDialog((Context) listener);
+        this.config = new Config((Context) listener);
     }
 
     @Override
@@ -45,7 +47,7 @@ public class InsertarHidranteRDB extends AsyncTask<Hidrante, Integer, String> {
         String hidrante = params[0].toJSON();
 
         try {
-            URL url = new URL(Config.setHidranteURL);
+            URL url = new URL(config.setHidranteURL);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("POST");
             conn.setUseCaches(false);

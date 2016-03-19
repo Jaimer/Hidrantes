@@ -1,4 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="@string/user_profile_group_title">
+        <EditTextPreference
+            android:title="@string/username_setting"
+            android:summary="@string/username_setting_summary"
+            android:key="appusername"
+            />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/server_settings_group">
+        <EditTextPreference
+            android:title="@string/server_url_setting"
+            android:summary="@string/server_url_setting_summary"
+            android:key="serverurl"
+            />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/about_group_title">
+        <Preference android:title="Desarrollado por Jaime Moscoso."
+            android:summary="Ver más información en http://github.com/jaimer">
+        </Preference>
 
+    </PreferenceCategory>
 </PreferenceScreen>

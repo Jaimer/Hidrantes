@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Base64;
 import android.util.Log;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -29,6 +30,7 @@ import io.github.jaimer.hidrantescerca.Utils.Config;
 public class DBSync extends AsyncTask<Context, Integer, String> {
     private SyncTaskCompleted listener;
     private ProgressDialog dialog;
+    private Config config;
 
     public DBSync(SyncTaskCompleted listener) {
         this.listener = listener;
@@ -39,6 +41,7 @@ public class DBSync extends AsyncTask<Context, Integer, String> {
     @Override
     protected String doInBackground(Context... params) {
         Context context = params[0];
+        this.config  = new Config(context);
         //Debug.waitForDebugger(); Debuggin'
         String response = null;
         String resultado = null;
@@ -51,7 +54,7 @@ public class DBSync extends AsyncTask<Context, Integer, String> {
         localmovs = ldb.getMovRows();
 
         try {
-            URL url = new URL(Config.DBsync+localmovs);
+            URL url = new URL(config.DBsync+localmovs);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setReadTimeout(10000 /* milliseconds */);
             conn.setConnectTimeout(15000 /* milliseconds */);

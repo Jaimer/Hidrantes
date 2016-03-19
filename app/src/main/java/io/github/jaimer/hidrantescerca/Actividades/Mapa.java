@@ -35,6 +35,7 @@ import io.github.jaimer.hidrantescerca.BD.LocalDB;
 import io.github.jaimer.hidrantescerca.BD.SyncTaskCompleted;
 import io.github.jaimer.hidrantescerca.Entidades.Marcador;
 import io.github.jaimer.hidrantescerca.R;
+import io.github.jaimer.hidrantescerca.Utils.Config;
 
 public class Mapa extends AppCompatActivity implements SyncTaskCompleted, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
 
@@ -56,6 +57,7 @@ public class Mapa extends AppCompatActivity implements SyncTaskCompleted, Google
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Config config = new Config(this);
         mRequestingLocationUpdates = false;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapa);
@@ -215,6 +217,11 @@ public class Mapa extends AppCompatActivity implements SyncTaskCompleted, Google
         bundle.putParcelable("userpos", mLastLocation);
         Intent intent = new Intent(this, Lista.class);
         intent.putExtra("bundle", bundle);
+        startActivity(intent);
+    }
+
+    public void abrirAjustes(MenuItem menuItem){
+        Intent intent = new Intent(this, AjustesActivity.class);
         startActivity(intent);
     }
 
