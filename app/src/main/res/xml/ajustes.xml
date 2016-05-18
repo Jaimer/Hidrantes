@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <PreferenceCategory android:title="@string/user_profile_group_title">
-        <EditTextPreference
+        <Preference
             android:title="@string/username_setting"
-            android:summary="@string/username_setting_summary"
-            android:key="appusername"
+            android:summary="Usuario: %s"
+            android:defaultValue="ninguno"
+            android:key="appusername">
+            <intent android:action="android.intent.action.VIEW"
+                android:targetPackage="io.github.jaimer.hidrantescerca"
+                android:targetClass="io.github.jaimer.hidrantescerca.Actividades.Login"></intent>
+            </Preference>
+        <EditTextPreference
+            android:title="@string/password_setting"
+            android:summary=""
+            android:key="serverurl"
+            android:defaultValue=""
             />
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/server_settings_group">
@@ -18,6 +28,5 @@
         <Preference android:title="Desarrollado por Jaime Moscoso."
             android:summary="Ver más información en http://github.com/jaimer">
         </Preference>
-
     </PreferenceCategory>
 </PreferenceScreen>

@@ -55,9 +55,12 @@
             android:label="@string/title_activity_editar_hidrante"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
-        <activity android:name=".Actividades.AjustesActivity"
-            android:label="Ajustes">
-
+        <activity
+            android:name=".Actividades.AjustesActivity"
+            android:label="Ajustes" >
+        </activity>
+        <activity android:name=".Actividades.Login"
+            android:label="Login">
         </activity>
     </application>
 
