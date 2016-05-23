@@ -1,8 +1,12 @@
 package io.github.jaimer.hidrantescerca.Actividades;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.location.Location;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -37,7 +41,7 @@ import io.github.jaimer.hidrantescerca.Entidades.Marcador;
 import io.github.jaimer.hidrantescerca.R;
 import io.github.jaimer.hidrantescerca.Utils.Config;
 
-public class Mapa extends AppCompatActivity implements SyncTaskCompleted, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
+public class Mapa extends AppCompatActivity implements SyncTaskCompleted, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener, SharedPreferences.OnSharedPreferenceChangeListener {
 
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
     private ArrayList<Marcador> marcadores = new ArrayList<>();
@@ -46,6 +50,7 @@ public class Mapa extends AppCompatActivity implements SyncTaskCompleted, Google
     private Location mLastLocation;
     private LocationRequest mLocationRequest = new LocationRequest();
     private Boolean mRequestingLocationUpdates = true;
+    private String autorizado;
 
     // Keys for storing activity state in the Bundle.
     protected final static String REQUESTING_LOCATION_UPDATES_KEY = "requesting-location-updates-key";
@@ -60,6 +65,8 @@ public class Mapa extends AppCompatActivity implements SyncTaskCompleted, Google
         Config config = new Config(this);
         mRequestingLocationUpdates = false;
         super.onCreate(savedInstanceState);
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        autorizado = preferences.getString("Authorized", "");
         setContentView(R.layout.activity_mapa);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -75,61 +82,64 @@ public class Mapa extends AppCompatActivity implements SyncTaskCompleted, Google
         }
 
         this.ldb = new LocalDB(this);
+
         setUpMapIfNeeded();
         new DBSync(this).execute(this);
         mMap.getUiSettings().setMapToolbarEnabled(false);
+
+        if(autorizado.equals("true")) {
         //Dibuja un marcador en el punto donde el usuario toco el mapa y centra la vista a ese punto
-        mMap.setOnMapClickListener(new OnMapClickListener() {
+            mMap.setOnMapClickListener(new OnMapClickListener() {
 
-            public void onMapClick(LatLng latLng) {
+                public void onMapClick(LatLng latLng) {
 
-                // Creating a marker
-                MarkerOptions markerOptions = new MarkerOptions();
+                    // Creating a marker
+                    MarkerOptions markerOptions = new MarkerOptions();
 
-                // Setting the position for the marker
-                markerOptions.position(latLng);
+                    // Setting the position for the marker
+                    markerOptions.position(latLng);
 
-                // Setting the title for the marker.
-                // This will be displayed on taping the marker
-                markerOptions.title("Toca para agregar");
+                    // Setting the title for the marker.
+                    // This will be displayed on taping the marker
+                    markerOptions.title("Toca para agregar");
 
-                markerOptions.icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_hidrante));
+                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_hidrante));
 
-                // Clears the previously touched position
-                mMap.clear();
-                dibujarHidrantes();
+                    // Clears the previously touched position
+                    mMap.clear();
+                    dibujarHidrantes();
 
-                // Animating to the touched position
-                mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+                    // Animating to the touched position
+                    mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
 
-                // Placing a marker on the touched position
-                Marker marker = mMap.addMarker(markerOptions);
+                    // Placing a marker on the touched position
+                    Marker marker = mMap.addMarker(markerOptions);
 
-                marker.showInfoWindow();
-            }
-        });
-
-        //Abre la ventana de mantenimiento cuando el usuario toca el titulo del marcador y pasa la posicion de este
-        mMap.setOnInfoWindowClickListener(new OnInfoWindowClickListener() {
-            @Override
-            public void onInfoWindowClick(Marker marker) {
-                Intent intent = new Intent(Mapa.this, DetallesHidrante.class);
-                LatLng pos = marker.getPosition();
-                int id;
-                try {
-                    id = Integer.valueOf(marker.getTitle().split(" | ")[0]);
-                } catch (NumberFormatException e) {
-                    id = -1;
+                    marker.showInfoWindow();
                 }
-                Bundle bundle = new Bundle();
-                bundle.putInt("id", id);
-                bundle.putParcelable("pos", pos);
-                bundle.putParcelable("userpos", mLastLocation);
-                intent.putExtra("bundle", bundle);
-                startActivity(intent);
-            }
-        });
+            });
 
+            //Abre la ventana de mantenimiento cuando el usuario toca el titulo del marcador y pasa la posicion de este
+            mMap.setOnInfoWindowClickListener(new OnInfoWindowClickListener() {
+                @Override
+                public void onInfoWindowClick(Marker marker) {
+                    Intent intent = new Intent(Mapa.this, DetallesHidrante.class);
+                    LatLng pos = marker.getPosition();
+                    int id;
+                    try {
+                        id = Integer.valueOf(marker.getTitle().split(" | ")[0]);
+                    } catch (NumberFormatException e) {
+                        id = -1;
+                    }
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("id", id);
+                    bundle.putParcelable("pos", pos);
+                    bundle.putParcelable("userpos", mLastLocation);
+                    intent.putExtra("bundle", bundle);
+                    startActivity(intent);
+                }
+            });
+        }
     }
 
     @Override
@@ -148,7 +158,11 @@ public class Mapa extends AppCompatActivity implements SyncTaskCompleted, Google
 
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        if(autorizado.equals("true")) {
+            getMenuInflater().inflate(R.menu.menu_main, menu);
+        }else{
+            getMenuInflater().inflate(R.menu.menu_inicial, menu);
+        }
         return true;
     }
 
@@ -184,16 +198,16 @@ public class Mapa extends AppCompatActivity implements SyncTaskCompleted, Google
     }
 
     private void setUpMapIfNeeded() {
-        // Do a null check to confirm that we have not already instantiated the map.
-        if (mMap == null) {
-            // Try to obtain the map from the SupportMapFragment.
-            mMap = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map))
-                    .getMap();
-            // Check if we were successful in obtaining the map.
-            if (mMap != null) {
-                setUpMap();
+            // Do a null check to confirm that we have not already instantiated the map.
+            if (mMap == null) {
+                // Try to obtain the map from the SupportMapFragment.
+                mMap = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map))
+                        .getMap();
+                // Check if we were successful in obtaining the map.
+                if (mMap != null) {
+                    setUpMap();
+                }
             }
-        }
     }
 
     private void setUpMap() {
@@ -221,6 +235,9 @@ public class Mapa extends AppCompatActivity implements SyncTaskCompleted, Google
     }
 
     public void abrirAjustes(MenuItem menuItem){
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        autorizado = preferences.getString("Authorized", "");
+        Toast.makeText(this,autorizado,Toast.LENGTH_LONG);
         Intent intent = new Intent(this, AjustesActivity.class);
         startActivity(intent);
     }
@@ -357,5 +374,63 @@ public class Mapa extends AppCompatActivity implements SyncTaskCompleted, Google
     public void onLocationChanged(Location location) {
         mLastLocation = location;
         setUpMap();
+    }
+
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        autorizado = preferences.getString("Authorized", "");
+        if(autorizado.equals("true")){
+            mMap.setOnMapClickListener(new OnMapClickListener() {
+
+                public void onMapClick(LatLng latLng) {
+
+                    // Creating a marker
+                    MarkerOptions markerOptions = new MarkerOptions();
+
+                    // Setting the position for the marker
+                    markerOptions.position(latLng);
+
+                    // Setting the title for the marker.
+                    // This will be displayed on taping the marker
+                    markerOptions.title("Toca para agregar");
+
+                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_hidrante));
+
+                    // Clears the previously touched position
+                    mMap.clear();
+                    dibujarHidrantes();
+
+                    // Animating to the touched position
+                    mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+
+                    // Placing a marker on the touched position
+                    Marker marker = mMap.addMarker(markerOptions);
+
+                    marker.showInfoWindow();
+                }
+            });
+
+            //Abre la ventana de mantenimiento cuando el usuario toca el titulo del marcador y pasa la posicion de este
+            mMap.setOnInfoWindowClickListener(new OnInfoWindowClickListener() {
+                @Override
+                public void onInfoWindowClick(Marker marker) {
+                    Intent intent = new Intent(Mapa.this, DetallesHidrante.class);
+                    LatLng pos = marker.getPosition();
+                    int id;
+                    try {
+                        id = Integer.valueOf(marker.getTitle().split(" | ")[0]);
+                    } catch (NumberFormatException e) {
+                        id = -1;
+                    }
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("id", id);
+                    bundle.putParcelable("pos", pos);
+                    bundle.putParcelable("userpos", mLastLocation);
+                    intent.putExtra("bundle", bundle);
+                    startActivity(intent);
+                }
+            });
+        }
     }
 }

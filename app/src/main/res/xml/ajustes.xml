@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory android:title="@string/user_profile_group_title">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:key="HidrantesCerca">
+    <PreferenceCategory android:title="@string/user_profile_group_title"
+        android:key="usercat">
         <Preference
             android:title="@string/username_setting"
-            android:summary="Usuario: %s"
+            android:summary="Toca para iniciar sesión"
             android:defaultValue="ninguno"
             android:key="appusername">
             <intent android:action="android.intent.action.VIEW"
                 android:targetPackage="io.github.jaimer.hidrantescerca"
-                android:targetClass="io.github.jaimer.hidrantescerca.Actividades.Login"></intent>
-            </Preference>
-        <EditTextPreference
-            android:title="@string/password_setting"
-            android:summary=""
-            android:key="serverurl"
-            android:defaultValue=""
-            />
+                android:targetClass="io.github.jaimer.hidrantescerca.Actividades.Login"/>
+        </Preference>
+        <Preference
+            android:key="Auhorized"
+            android:defaultValue="false">
+        </Preference>
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/server_settings_group">
         <EditTextPreference

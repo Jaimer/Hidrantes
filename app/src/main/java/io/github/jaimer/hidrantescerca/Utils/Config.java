@@ -16,6 +16,9 @@ public class Config {
     public String getLastMovURL;
     public String setHidranteURL;
     public String DBsync;
+    public String GetUsuariosURL;
+    public String GetUsuariosByEmailURL;
+    public String GetUsuariosByIDURL;
 
     public Config(Context context) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
@@ -26,8 +29,8 @@ public class Config {
         this.getLastMovURL = server+"getMovimientos.php?TRA=LAS&NUM=";
         this.setHidranteURL = server+"setHidrante.php";
         this.DBsync = server+"DBsync.php?NUM=";
-
-        Log.d("Servidor URL ", this.server);
-        Log.d("GetURL", this.getURL);
+        this.GetUsuariosURL = server + "getUsuario.php?BY=ALL";
+        this.GetUsuariosByEmailURL = server + "getUsuario.php?BY=EMAIL&EMAIL=";
+        this.GetUsuariosByIDURL = server + "getUsuario.php?BY=ID&ID=";
     }
 }

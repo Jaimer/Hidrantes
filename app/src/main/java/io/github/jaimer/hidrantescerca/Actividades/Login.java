@@ -2,10 +2,15 @@ package io.github.jaimer.hidrantescerca.Actividades;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.EditTextPreference;
+import android.preference.Preference;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.android.gms.auth.api.Auth;
@@ -13,17 +18,18 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.OptionalPendingResult;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 
+import io.github.jaimer.hidrantescerca.BD.GetUsuario;
+import io.github.jaimer.hidrantescerca.BD.GetUsuarioTaskCompleted;
 import io.github.jaimer.hidrantescerca.R;
 
 public class Login extends AppCompatActivity implements
         GoogleApiClient.OnConnectionFailedListener,
-        View.OnClickListener{
+        View.OnClickListener, GetUsuarioTaskCompleted {
 
     private GoogleApiClient mGoogleApiClient;
     private TextView mStatusTextView;
@@ -90,6 +96,7 @@ public class Login extends AppCompatActivity implements
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        Log.d("RequestCode", ""+requestCode);
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
@@ -99,12 +106,11 @@ public class Login extends AppCompatActivity implements
 
     // [START handleSignInResult]
     private void handleSignInResult(GoogleSignInResult result) {
-        Log.d("SIGNIN", "handleSignInResult:" + result.isSuccess());
         if (result.isSuccess()) {
             // Signed in successfully, show authenticated UI.
             GoogleSignInAccount acct = result.getSignInAccount();
-            mStatusTextView.setText("Autenticado");
             updateUI(true);
+            mStatusTextView.setText(acct.getDisplayName());
         } else {
             // Signed out, show unauthenticated UI.
             updateUI(false);
@@ -115,6 +121,7 @@ public class Login extends AppCompatActivity implements
     private void signIn() {
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
         startActivityForResult(signInIntent, RC_SIGN_IN);
+        new GetUsuario(this).execute(this);
     }
 
     // [START signOut]
@@ -195,6 +202,8 @@ public class Login extends AppCompatActivity implements
         }
     }
 
+    @Override
+    public void onGetUsuarioTaskCompleted() {
 
-
+    }
 }

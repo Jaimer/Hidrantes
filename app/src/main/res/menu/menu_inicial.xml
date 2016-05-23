@@ -1,0 +1,8 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".Main">
+    <item android:id="@+id/action_settings" android:title="Ajustes"
+        android:orderInCategory="300" app:showAsAction="ifRoom"
+        android:onClick="abrirAjustes"
+        android:icon="@drawable/ic_settings"/>
+</menu>
