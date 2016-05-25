@@ -12,10 +12,6 @@
                 android:targetPackage="io.github.jaimer.hidrantescerca"
                 android:targetClass="io.github.jaimer.hidrantescerca.Actividades.Login"/>
         </Preference>
-        <Preference
-            android:key="Auhorized"
-            android:defaultValue="false">
-        </Preference>
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/server_settings_group">
         <EditTextPreference

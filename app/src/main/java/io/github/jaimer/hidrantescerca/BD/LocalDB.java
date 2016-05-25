@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import io.github.jaimer.hidrantescerca.Entidades.Hidrante;
 import io.github.jaimer.hidrantescerca.Entidades.Marcador;
 import io.github.jaimer.hidrantescerca.Entidades.Movimiento;
+import io.github.jaimer.hidrantescerca.Entidades.Usuario;
 
 /**
  * Created by jmoscoso on 27/10/2015.
@@ -173,6 +174,36 @@ public class LocalDB extends SQLiteOpenHelper {
         }
         cursor.close();
         return movimientos;
+    }
+
+    public long insertarUsuario(Usuario usuario){
+        ContentValues values = new ContentValues();
+        values.put("id_cedula", usuario.getId_cedula());
+        values.put("nombre", usuario.getNombre());
+        values.put("apellido", usuario.getApellido());
+        values.put("tipo", usuario.getTipo());
+        values.put("institucion", usuario.getInstitucion());
+        values.put("cargo", usuario.getCargo());
+        values.put("password", usuario.getPassword());
+        values.put("estado", ""+usuario.getEstado());
+        values.put("email", usuario.getEmail());
+        long rowID = mDB.insertWithOnConflict("Usuario", null, values, SQLiteDatabase.CONFLICT_REPLACE);
+        return rowID;
+    }
+
+    public int usersExist(){
+        int users = 0;
+        Cursor cursor = mDB.rawQuery("SELECT COUNT(*) FROM Usuario", null);
+        if(cursor != null){
+            cursor.moveToFirst();
+            users = cursor.getInt(0);
+        }
+        cursor.close();
+        return users;
+    }
+
+    public Cursor borrarUsuarios(){
+        return mDB.rawQuery("DELETE FROM USUARIO", null);
     }
 
     public void cerrar(){

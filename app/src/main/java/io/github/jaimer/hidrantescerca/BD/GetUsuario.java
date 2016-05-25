@@ -6,7 +6,9 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.widget.Toast;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -18,16 +20,18 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 
+import io.github.jaimer.hidrantescerca.Entidades.Usuario;
 import io.github.jaimer.hidrantescerca.Utils.Config;
 
 /**
  * Created by jaime on 22/5/2016.
  */
-public class GetUsuario extends AsyncTask<Context, Integer, String> {
+public class GetUsuario extends AsyncTask<Context, Integer, Boolean> {
     private GetUsuarioTaskCompleted listener;
     private ProgressDialog progressDialog;
     private Config config;
     private String usuario;
+    private LocalDB localDB;
 
     public GetUsuario(GetUsuarioTaskCompleted listener) {
         this.listener = listener;
@@ -35,15 +39,16 @@ public class GetUsuario extends AsyncTask<Context, Integer, String> {
     }
 
     @Override
-    protected String doInBackground(Context... params) {
+    protected Boolean doInBackground(Context... params) {
         Context context = params[0];
         this.config  = new Config(context);
+        this.localDB = new LocalDB(context);
         //Debug.waitForDebugger(); Debuggin'
         String response = null;
         String resultado = null;
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         this.usuario = preferences.getString("appusername", "");
-
+        Log.d("usuario", usuario);
         try {
             URL url = new URL(config.GetUsuariosByEmailURL + usuario);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -66,14 +71,29 @@ public class GetUsuario extends AsyncTask<Context, Integer, String> {
                     br.close();
                     response = sb.toString();
                     JSONObject resp = new JSONObject(response);
-                    SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(context);
-                    SharedPreferences.Editor editor = settings.edit();
-                    if(resp.get("estado").equals("1")){
-                        editor.putString("Authorized", "true");
+                    if(resp.get("estado").toString().equals("1")){
+                        JSONArray usrdata = resp.getJSONArray("Usuario");
+                        JSONObject usr = usrdata.getJSONObject(0);
+                        Usuario usuario = new Usuario(
+                                usr.getString("id_cedula"),
+                                usr.getString("nombre"),
+                                usr.getString("apellido"),
+                                usr.getInt("tipo"),
+                                usr.getString("institucion"),
+                                usr.getString("cargo"),
+                                usr.getString("password"),
+                                usr.getString("estado").charAt(0),
+                                usr.getString("email")
+                        );
+                        if(usuario.getEstado() == 'A'){
+                            localDB.insertarUsuario(usuario);
+                            return true;
+                        }else{
+                            return false;
+                        }
                     }else{
-                        editor.putString("Authorized", "false");
+                        return false;
                     }
-                    editor.apply();
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -85,7 +105,7 @@ public class GetUsuario extends AsyncTask<Context, Integer, String> {
             Log.d("Error", "Error de Lectura");
         }
 
-        return null;
+        return false;
     }
 
     @Override
@@ -94,7 +114,8 @@ public class GetUsuario extends AsyncTask<Context, Integer, String> {
     }
 
     @Override
-    protected void onPostExecute(String s) {
-        super.onPostExecute(s);
+    protected void onPostExecute(Boolean b) {
+        super.onPostExecute(b);
+        listener.onGetUsuarioTaskCompleted(b);
     }
 }

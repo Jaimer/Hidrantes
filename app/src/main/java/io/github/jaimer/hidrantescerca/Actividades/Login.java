@@ -3,15 +3,13 @@ package io.github.jaimer.hidrantescerca.Actividades;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.preference.EditTextPreference;
-import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -25,6 +23,7 @@ import com.google.android.gms.common.api.Status;
 
 import io.github.jaimer.hidrantescerca.BD.GetUsuario;
 import io.github.jaimer.hidrantescerca.BD.GetUsuarioTaskCompleted;
+import io.github.jaimer.hidrantescerca.BD.LocalDB;
 import io.github.jaimer.hidrantescerca.R;
 
 public class Login extends AppCompatActivity implements
@@ -35,12 +34,13 @@ public class Login extends AppCompatActivity implements
     private TextView mStatusTextView;
     private static final int RC_SIGN_IN = 9001;
     private ProgressDialog mProgressDialog;
+    private LocalDB db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        this.db  = new LocalDB(this);
         mStatusTextView = (TextView) findViewById(R.id.status);
 
         // Button listeners
@@ -110,7 +110,12 @@ public class Login extends AppCompatActivity implements
             // Signed in successfully, show authenticated UI.
             GoogleSignInAccount acct = result.getSignInAccount();
             updateUI(true);
-            mStatusTextView.setText(acct.getDisplayName());
+            SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putString("appusername", acct.getEmail());
+            editor.apply();
+            new GetUsuario(this).execute(this);
+            mStatusTextView.setText("Bienvenido, "+acct.getDisplayName());
         } else {
             // Signed out, show unauthenticated UI.
             updateUI(false);
@@ -121,7 +126,7 @@ public class Login extends AppCompatActivity implements
     private void signIn() {
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
         startActivityForResult(signInIntent, RC_SIGN_IN);
-        new GetUsuario(this).execute(this);
+
     }
 
     // [START signOut]
@@ -195,15 +200,22 @@ public class Login extends AppCompatActivity implements
                 break;
             case R.id.sign_out_button:
                 signOut();
+                db.borrarUsuarios();
                 break;
             case R.id.disconnect_button:
                 revokeAccess();
+                db.borrarUsuarios();
                 break;
         }
     }
 
     @Override
-    public void onGetUsuarioTaskCompleted() {
-
+    public void onGetUsuarioTaskCompleted(Boolean b) {
+        if(!b){
+            //updateUI(false);
+            Toast.makeText(this, "Usuario no registrado o inactivo", Toast.LENGTH_LONG).show();
+        }else{
+            Toast.makeText(this, "Registro completo", Toast.LENGTH_LONG).show();
+        }
     }
 }
