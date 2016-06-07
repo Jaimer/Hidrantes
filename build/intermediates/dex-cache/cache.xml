@@ -1,3 +1,250 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
 
+    <item
+        jar="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-identity\8.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="b82b8e847173c28efffcd291b2a0b1ae9ad17fa4">
+        <dex dex="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-identity-8.4.0_6bece7589169e45720ffe42648f7961c0c02f5c6\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.1\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="3be474b1b21b31cf2fa93fe6bd641ae108d96452">
+        <dex dex="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-23.2.1_b3a8bbd30ec63458b8bc0f57d09b9d5a2fe469f4\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads\8.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="b5e7892fb0708e792e0e933c4c0a0ca0ac7831fb">
+        <dex dex="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-ads-8.4.0_bd2d104708ada554bdf8b7aeb3cdf015bdbd3c7a\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-location\8.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="a8412b654dab86d57bf90683367488211c8a81f1">
+        <dex dex="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-location-8.4.0_d4158abd00ab73dcdfc2b1ec6fa6728789235703\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="2f3b045d24f0187f08fe24ff2354dc2b7368c427">
+        <dex dex="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_b82eb52869adce1ec7c4a13207bc5c464b68f49d\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\exploded-aar\com.android.support\design\23.2.1\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="72961d8b453b46e277702f18de9d210bc019e36e">
+        <dex dex="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-design-23.2.1_7783735254feacb9fb51d1d14ada670ccd18b51e\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\23.0.0\jars\libs\internal_impl-23.0.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="03d38bb042efe3e5ce27ba66b729a9523c36d8fe">
+        <dex dex="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-23.0.0_0eb92dc8f62e851b606cebc6c0dde28335aba154\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wearable\8.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="e167a34eaca0b31704212f43f9576ea84e05046f">
+        <dex dex="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-wearable-8.4.0_e3fb39cc900e3e17750e7c5d3333fbe6b1e4fa4e\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.2.1\jars\libs\internal_impl-23.2.1.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="607a3d0b8013b4ccbfeb0b7cb293351994e021fb">
+        <dex dex="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-23.2.1_0dde3514476c2778f8182c6b5b6d6afdda4355c6\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-safetynet\8.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="0194a7409c40de94fb539d4ad9928ec5d47afeb7">
+        <dex dex="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-safetynet-8.4.0_9de0b0cd3c684a90b30a8aecb8d4af67e2ae45e2\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\8.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="fef2b3e4b6b1b0e5fe7b69fa137a5fa55a3182ab">
+        <dex dex="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-base-8.4.0_7267669cec2ead33c2fcb9207bdae6d742440e67\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-games\8.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="3a364cc6b698d1b3b2d284f64618daaa7fe77ddf">
+        <dex dex="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-games-8.4.0_2c30be7feb0f04ebb566db39646ea24ead691651\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-plus\8.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="1a78298e7724d5440d210bcb946b3493250d354d">
+        <dex dex="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-plus-8.4.0_4afe91cbd5e71d382206740ff1c6f5684ef3f52f\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics\8.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="1c9f35e952b212c843f7bd2c7eec8e82ad95602e">
+        <dex dex="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-analytics-8.4.0_18de04057374bfef9dcd78939715d371823c76c0\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-vision\8.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="dfecc4d835cdabcdecf7e95f0d20a3ef1e9d8ef4">
+        <dex dex="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-vision-8.4.0_cf07bcf90333fb44e14a66b7b09c05071e3438ae\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.2.1\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="3469cb457f10f74c28cbc05f069b6c894f6cbdd0">
+        <dex dex="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-23.2.1_8bb4919b6fa4dbf9fbdf06b99f31c96b49ae9b4e\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-measurement\8.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="613298b7aa012f121ce542881c0a599ebd8078f2">
+        <dex dex="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-measurement-8.4.0_a968229e6f4a2225cee89673928c17b09bcfe716\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="8e673cdfadd8f2d98fdb2fda2285c30f6e449782">
+        <dex dex="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-basement-8.4.0_fc5706e941f58dacdb359845fac06f521f440d34\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-drive\8.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="b36f30ac5ee5d5214f4b1e2ac49f11889d58e71a">
+        <dex dex="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-drive-8.4.0_59c64a9dda5099154bc1fedb225740ef963e10b3\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast\8.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="551e78f21acf69ebfb489c0e79647824c838013e">
+        <dex dex="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-cast-8.4.0_4357bc0bfb07fceac5e509e9637f1aa49220e316\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.2.1\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="e4d0cbb0b999604b349062f0214a0a228a7fd151">
+        <dex dex="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-23.2.1_9aa2393dd8cd5a48819bb8f9981871dcffdadea4\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\jaime\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.2.1\support-annotations-23.2.1.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="ccb693bc0774fcb637246f7360de25b4af7df318">
+        <dex dex="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-23.2.1_d1c8694f4ebfcc7cc1872b149855253c800d5e17\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\8.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="2d7fe76982677315c4dc4edfb459c8ca718a9d4c">
+        <dex dex="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-gcm-8.4.0_0d14e7014d7ed122870323a1246a4db6b61fd413\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-panorama\8.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="08d34b2d135c1cc96ab506fd8bf6916d1e2f391a">
+        <dex dex="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-panorama-8.4.0_a3399cfd2a0e78db00f960d5bf0890bb50abb841\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-auth\8.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="966e5771a5a2ebfb31bf00d7cd6cd2546d245517">
+        <dex dex="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-auth-8.4.0_239964a68a7f24b1b76f5f7f1f23a72b5cd37fac\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wallet\8.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="f2df436a8f02ce7e4d7d209671fc45f97c470f0e">
+        <dex dex="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-wallet-8.4.0_2cb5a41ea812441a8c27178d1d525224b76577a8\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-nearby\8.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="9cad249cf62751a323d9af568caf12284b7d6062">
+        <dex dex="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-nearby-8.4.0_57e2d03906e1dd879dace780b9bce7643b00ba51\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appinvite\8.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="9fe026fb4c7fce21bc5142f6e1bdf844f28061ac">
+        <dex dex="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-appinvite-8.4.0_2de4013beae40e58b20183898ae506883f5f05db\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\8.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="65d086ee9daaf87b5af62ad24471edafa433354c">
+        <dex dex="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-appindexing-8.4.0_81e207b2989cabdefd058bcbf26f1d8780af671a\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-fitness\8.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="c54246475c1bb64ac6857d1320364bfbfeda2c46">
+        <dex dex="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-fitness-8.4.0_2945cd547f0868dc58ed56a6a8e7fdd7259f3389\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="d71e7b57991b700b012efd09bdcd8b7fc47ee2cf">
+        <dex dex="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_7ee5656b34ac6efa288f100eb1a59a9eedc342c7\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\8.4.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="04de44f90606c77f3b28cf44861f306290505aac">
+        <dex dex="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-maps-8.4.0_d2e3fce479e63bbc04e2e00fc1f0aad7aee43973\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.2.1\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="e3885783ff8926ed9e2fdcd16816c2e1e73e7aee">
+        <dex dex="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-23.2.1_2466516984605045ae3cb2170733c57560ec73bd\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\23.0.0\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="d358b3dd49a7c67844622dcbc9cf4339e13952ce">
+        <dex dex="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-mediarouter-v7-23.0.0_40443037e1b26f5163472ec990406d06f57ef6bd\classes.dex" />
+    </item>
+    <item
+        jar="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.2.1\jars\classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="673d77a5bbddd766037f088e775df525c46407f0">
+        <dex dex="C:\Users\jaime\OneDrive\Proyectos\Hidrantes Cerca\HidrantesCerca\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-23.2.1_785e7cc5db6d2b7a86098ea79428e7b4d286baef\classes.dex" />
+    </item>
+
+</items>

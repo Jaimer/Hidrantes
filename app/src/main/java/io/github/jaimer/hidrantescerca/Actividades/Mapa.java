@@ -50,7 +50,6 @@ public class Mapa extends AppCompatActivity implements SyncTaskCompleted, Google
     private Location mLastLocation;
     private LocationRequest mLocationRequest = new LocationRequest();
     private Boolean mRequestingLocationUpdates = true;
-    private LocalDB db;
 
     // Keys for storing activity state in the Bundle.
     protected final static String REQUESTING_LOCATION_UPDATES_KEY = "requesting-location-updates-key";
@@ -65,7 +64,6 @@ public class Mapa extends AppCompatActivity implements SyncTaskCompleted, Google
         Config config = new Config(this);
         mRequestingLocationUpdates = false;
         super.onCreate(savedInstanceState);
-        db = new LocalDB(this);
         setContentView(R.layout.activity_mapa);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -86,59 +84,57 @@ public class Mapa extends AppCompatActivity implements SyncTaskCompleted, Google
         new DBSync(this).execute(this);
         mMap.getUiSettings().setMapToolbarEnabled(false);
 
-        if(db.usersExist() > 0) {
         //Dibuja un marcador en el punto donde el usuario toco el mapa y centra la vista a ese punto
-            mMap.setOnMapClickListener(new OnMapClickListener() {
+        mMap.setOnMapClickListener(new OnMapClickListener() {
 
-                public void onMapClick(LatLng latLng) {
+            public void onMapClick(LatLng latLng) {
 
-                    // Creating a marker
-                    MarkerOptions markerOptions = new MarkerOptions();
+                // Creating a marker
+                MarkerOptions markerOptions = new MarkerOptions();
 
-                    // Setting the position for the marker
-                    markerOptions.position(latLng);
+                // Setting the position for the marker
+                markerOptions.position(latLng);
 
-                    // Setting the title for the marker.
-                    // This will be displayed on taping the marker
-                    markerOptions.title("Toca para agregar");
+                // Setting the title for the marker.
+                // This will be displayed on taping the marker
+                markerOptions.title("Toca para agregar");
 
-                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_hidrante));
+                markerOptions.icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_hidrante));
 
-                    // Clears the previously touched position
-                    mMap.clear();
-                    dibujarHidrantes();
+                // Clears the previously touched position
+                mMap.clear();
+                dibujarHidrantes();
 
-                    // Animating to the touched position
-                    mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+                // Animating to the touched position
+                mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
 
-                    // Placing a marker on the touched position
-                    Marker marker = mMap.addMarker(markerOptions);
+                // Placing a marker on the touched position
+                Marker marker = mMap.addMarker(markerOptions);
 
-                    marker.showInfoWindow();
+                marker.showInfoWindow();
+            }
+        });
+
+        //Abre la ventana de mantenimiento cuando el usuario toca el titulo del marcador y pasa la posicion de este
+        mMap.setOnInfoWindowClickListener(new OnInfoWindowClickListener() {
+            @Override
+            public void onInfoWindowClick(Marker marker) {
+                Intent intent = new Intent(Mapa.this, DetallesHidrante.class);
+                LatLng pos = marker.getPosition();
+                int id;
+                try {
+                    id = Integer.valueOf(marker.getTitle().split(" | ")[0]);
+                } catch (NumberFormatException e) {
+                    id = -1;
                 }
-            });
-
-            //Abre la ventana de mantenimiento cuando el usuario toca el titulo del marcador y pasa la posicion de este
-            mMap.setOnInfoWindowClickListener(new OnInfoWindowClickListener() {
-                @Override
-                public void onInfoWindowClick(Marker marker) {
-                    Intent intent = new Intent(Mapa.this, DetallesHidrante.class);
-                    LatLng pos = marker.getPosition();
-                    int id;
-                    try {
-                        id = Integer.valueOf(marker.getTitle().split(" | ")[0]);
-                    } catch (NumberFormatException e) {
-                        id = -1;
-                    }
-                    Bundle bundle = new Bundle();
-                    bundle.putInt("id", id);
-                    bundle.putParcelable("pos", pos);
-                    bundle.putParcelable("userpos", mLastLocation);
-                    intent.putExtra("bundle", bundle);
-                    startActivity(intent);
-                }
-            });
-        }
+                Bundle bundle = new Bundle();
+                bundle.putInt("id", id);
+                bundle.putParcelable("pos", pos);
+                bundle.putParcelable("userpos", mLastLocation);
+                intent.putExtra("bundle", bundle);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -158,22 +154,14 @@ public class Mapa extends AppCompatActivity implements SyncTaskCompleted, Google
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         menu.clear();
-        if(db.usersExist() > 0) {
-            getMenuInflater().inflate(R.menu.menu_main, menu);
-        }else{
-            getMenuInflater().inflate(R.menu.menu_inicial, menu);
-        }
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         menu.clear();
-        if(db.usersExist() > 0) {
-            getMenuInflater().inflate(R.menu.menu_main, menu);
-        }else{
-            getMenuInflater().inflate(R.menu.menu_inicial, menu);
-        }
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
