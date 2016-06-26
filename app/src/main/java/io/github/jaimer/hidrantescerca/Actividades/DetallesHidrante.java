@@ -34,6 +34,7 @@ public class DetallesHidrante extends AppCompatActivity implements InsHidranteRD
     private boolean fotoTomada = false;
     private Hidrante hidrante;
     private int id;
+    private LocalDB db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +46,7 @@ public class DetallesHidrante extends AppCompatActivity implements InsHidranteRD
         Bundle bundle = getIntent().getParcelableExtra("bundle");
         id = bundle.getInt("id");
         if(id != -1){
-            LocalDB db = new LocalDB(this);
+            db = new LocalDB(this);
             Hidrante hidrante = db.getHidrantePorId(id);
             if(hidrante.getFoto().length !=0){
                 fotoTomada = true;
@@ -147,7 +148,13 @@ public class DetallesHidrante extends AppCompatActivity implements InsHidranteRD
                     obs.getText().toString()
             );
         }
-        new InsertarHidranteRDB(this).execute(hidrante);
+
+        if(db.usersExist() > 0){
+            new InsertarHidranteRDB(this).execute(hidrante);
+        }else{
+            Toast.makeText(this, "Usuario no autorizado", Toast.LENGTH_LONG).show();
+        }
+
 
     }
 

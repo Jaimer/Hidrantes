@@ -81,7 +81,7 @@ public class Mapa extends AppCompatActivity implements SyncTaskCompleted, Google
         this.ldb = new LocalDB(this);
 
         setUpMapIfNeeded();
-        new DBSync(this).execute(this);
+        sincronizar();
         mMap.getUiSettings().setMapToolbarEnabled(false);
 
         //Dibuja un marcador en el punto donde el usuario toco el mapa y centra la vista a ese punto
@@ -240,7 +240,19 @@ public class Mapa extends AppCompatActivity implements SyncTaskCompleted, Google
     }
 
     public void sincronizar(MenuItem menuItem) {
-        new DBSync(this).execute(this);
+        if(ldb.usersExist() > 0){
+            new DBSync(this).execute(this);
+        }else{
+            Toast.makeText(this, "Usuario no autorizado", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    public void sincronizar() {
+        if(ldb.usersExist() > 0){
+            new DBSync(this).execute(this);
+        }else{
+            Toast.makeText(this, "Usuario no autorizado", Toast.LENGTH_LONG).show();
+        }
     }
 
     public void masCercano(View view) {//Quise implementar un metodo parecido a la actividad lista pero salia al reves ???? Lo dejo como estaba.

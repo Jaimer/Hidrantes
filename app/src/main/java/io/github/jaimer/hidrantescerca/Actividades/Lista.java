@@ -35,7 +35,7 @@ public class Lista extends AppCompatActivity {
         userpos = bundle.getParcelable("userpos");
         final ArrayList<Marcador> marcadores = obtenerDistancias(db.getMarcadores());
         Collections.sort(marcadores, new Marcador());//Ordenar por distancia
-        if(!marcadores.isEmpty()){
+        if(!marcadores.isEmpty() && db.usersExist() > 0){
             ListView lstv = (ListView)findViewById(R.id.lst_hidrantes);
             ArrayAdapter<Marcador> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, marcadores);
             lstv.setAdapter(adapter);
