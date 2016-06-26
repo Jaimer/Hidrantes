@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "388887759",
+    "project_id": "hidrantescerca"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:388887759:android:68e5d8c8747663c6",
+        "android_client_info": {
+          "package_name": "io.github.jaimer.hidrantescerca"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "388887759-p88e3sp2qf2t3cp53vavh4j359hugh3n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "io.github.jaimer.hidrantescerca",
+            "certificate_hash": "58BD1478592CD68B25BE1B51E45A205B8B465F7C"
+          }
+        },
+        {
+          "client_id": "388887759-h560te6hun08h8tu4pck2j6ggssl8vtb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDL7o0W1Rane3CiR_R27RjqhEf6i9F_kag"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
